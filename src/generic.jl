@@ -42,9 +42,6 @@ function validchar(ortho::OrthographicSystem, ch::AbstractString)::Bool
     ch in cplist
 end
 
-function tokenize(ortho::OrthographicSystem, s::AbstractString)
-    ""
-end
 
 """
 $(SIGNATURES)
@@ -78,4 +75,19 @@ function trimtail(s::AbstractString, arr)
     else
         s
     end
+end
+
+
+"Singleton type for unanalyzed tokens."
+struct UnanalyzedToken <: TokenCategory end
+
+"""
+$(SIGNATURES)
+Mindlessly split `s` on white space. 
+This should be overriden for any `OrthographicSystem` you define.
+"""
+function tokenize(ortho::OrthographicSystem, s::AbstractString, tokens::Array{OrthographicToken}=[])
+    unanalyzed = UnanalyzedToken()
+    wsdelimited = split(s)
+    map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
 end
