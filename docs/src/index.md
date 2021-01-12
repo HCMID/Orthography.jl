@@ -6,11 +6,14 @@ CurrentModule = Orthography
 ```
 ## Types
 ```@docs
-EditingRepository
+OrthographicSystem
+SimpleAscii
 ```
 
 ## Functions
 ```@docs
+codepoints(ortho::T) where {T <: OrthographicSystem}
+tokentypes(ortho::T) where {T <: OrthographicSystem}
 ```
 ## Index
 ```@index
