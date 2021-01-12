@@ -2,6 +2,11 @@
 @testset "Test parameterized functions" begin
     charset = ['a', 'b', 'c', '!']
     tokencats = ["alphas", "bangs"]
-    s = codepoints(SimpleAscii(charset, tokencats))
-    @test s ==  ['a', 'b', 'c', '!']
+    genericcps = codepoints(GenericOrthography(charset, tokencats))
+    @test genericcps ==  ['a', 'b', 'c', '!']
+
+    asciicps = codepoints(SimpleAscii())
+    expected = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.,:;!?'\"()[]"
+    @test asciicps == expected
+
 end

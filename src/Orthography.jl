@@ -3,7 +3,7 @@ module Orthography
 using Documenter, DocStringExtensions
 
 export OrthographicSystem, TokenCategory
-export SimpleAscii
+export GenericOrthography, SimpleAscii
 export codepoints, tokentypes
 
 "An abstract type for orthographic systems."
