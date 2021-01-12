@@ -13,3 +13,13 @@ end
     #@test validchar(ortho, 'a')
     @test validstring(ortho, "baa")
 end
+
+@testset "Test collecting and stripping punctuation" begin
+    s = "abcd;"
+    punct = ",:!.;"
+    strippedaway = Orthography.collecttail(s,punct)
+    @test strippedaway === ";"
+
+    trimmed = Orthography.trimtail(s,punct)
+    @test trimmed == "abcd"
+end
