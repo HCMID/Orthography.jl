@@ -9,6 +9,12 @@ export codepoints, tokentypes
 "An abstract type for orthographic systems."
 abstract type OrthographicSystem end
 
+"A generic model of an orthographic system implementation."
+struct GenericOrthography <: OrthographicSystem
+    codepoints
+    tokencategories
+end
+
 "An abstract type for token categories."
 abstract type TokenCategory end
 
@@ -29,7 +35,7 @@ function tokentypes(ortho::T) where {T <: OrthographicSystem}
     ortho.tokentypes
 end
 
-# A specific implementation of an OrthoographicSystem
+# A specific implementation of an OrthographicSystem
 include("simpleAscii.jl")
 # Some common token categories
 include("basicTypes.jl")

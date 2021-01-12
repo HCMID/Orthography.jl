@@ -1,16 +1,17 @@
 
 
 
-struct GenericOrthography <: OrthographicSystem
-    codepoints
-    tokencategories
-end
 
 
-"An orthographic for a basic alphabetic subset of the ASCII characater set."
+"An orthographic system for a basic alphabetic subset of the ASCII characater set."
 struct SimpleAscii <: OrthographicSystem
 end
 
+"""
+$(SIGNATURES)
+Define a string including all valid code points
+in the `SimpleAscii` orthography.
+"""
 function codepoints(ortho::SimpleAscii)
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     alphaupper = uppercase(alphabet)
@@ -20,7 +21,11 @@ function codepoints(ortho::SimpleAscii)
     alphabet * alphaupper * punct * quotes * brackets
 end
 
-
-
-
-
+"""
+$(SIGNATURES)
+Define an Array with all valid `TokenCategory`systems
+in the `SimpleAscii` orthography.
+"""
+function tokentypes(ortho::SimpleAscii)
+    [AlphabeticToken(), NumericToken(), PunctuationToken()]
+end
