@@ -8,12 +8,8 @@ end
 
 
 
-struct Latin23  <: OrthographicSystem
-end
 
 
 
 
-function codepoints(ortho::Latin23)
-    "UVIJ"
-end
+

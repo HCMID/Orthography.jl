@@ -1,28 +1,20 @@
 using Orthography
 using Test
 
-@testset "Test enumeration of basic token types" begin
-    #@test alphabetictoken < numerictoken
 
-end
-
-@testset "Test constructors of systems" begin
-    charset = ['a', 'b', 'c', '!']
-    tokencats = ["alphas", "bangs"]
-    ortho = SimpleAscii(charset, tokencats)
-    @test isa(ortho, SimpleAscii)
-    @test typeof(ortho) <: OrthographicSystem
-end
+include("test_constructors.jl")
+include("test_tokentypes.jl")
+include("test_codepoints.jl")
 
 
-@testset "Test parameterized functions" begin
-    charset = ['a', 'b', 'c', '!']
-    tokencats = ["alphas", "bangs"]
-    s = codepoints(SimpleAscii(charset, tokencats))
-    @test s ==  ['a', 'b', 'c', '!']
-end
-
-@testset "Test fake ortho" begin
+#=
+@testset "Test mechanism of alternative orthographic implementatoin" begin
+    struct Latin23  <: OrthographicSystem
+    end
+    function codepoints(ortho::Latin23)
+        "UVIJ"
+    end
     latin = Orthography.Latin23()
     @test codepoints(latin) == "UVIJ"
 end
+=#

@@ -1,10 +1,8 @@
 module Orthography
 
-
 using Documenter, DocStringExtensions
 
-
-export OrthographicSystem, SimpleAscii #, BasicTokenTypes
+export OrthographicSystem, SimpleAscii
 export codepoints, tokentypes
 
 "An abstract type for orthographic systems."
@@ -30,15 +28,7 @@ end
 # A specific implementation of an OrthoographicSystem
 include("simpleAscii.jl")
 
- 
 
-#=
-"A useful set of widely usable categories of token."
-@enum BasicTokenTypes begin
-    alphabetictoken=1
-    numerictoken=2
-    punctuationtoken=3
-end
-=#
+
 
 end # module
