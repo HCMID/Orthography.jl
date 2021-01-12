@@ -3,21 +3,17 @@ module Orthography
 
 
 export OrthographicSystem, SimpleAscii #, BasicTokenTypes
-export cps
+export codepoints
 
 "A basic structure for orthographic systems."
 abstract type OrthographicSystem end
 
+
 include("simpleAscii.jl")
 
+ 
 
 #=
-
-
-
-
-
-
 "A useful set of widely usable categories of token."
 @enum BasicTokenTypes begin
     alphabetictoken=1

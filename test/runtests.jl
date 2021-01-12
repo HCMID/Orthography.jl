@@ -9,12 +9,20 @@ end
 @testset "Test constructors of systems" begin
     charset = ['a', 'b', 'c', '!']
     tokencats = ["alphas", "bangs"]
-    #ortho = OrthographicSystem(charset, tokencats)
-    #@test isa(ortho, OrthographicSystem)
+    ortho = SimpleAscii(charset, tokencats)
+    @test isa(ortho, SimpleAscii)
+    @test typeof(ortho) <: OrthographicSystem
 end
 
 
 @testset "Test parameterized functions" begin
-    s = cps(SimpleAscii)
-    @test s == "XX"
+    charset = ['a', 'b', 'c', '!']
+    tokencats = ["alphas", "bangs"]
+    s = codepoints(SimpleAscii(charset, tokencats))
+    @test s ==  ['a', 'b', 'c', '!']
+end
+
+@testset "Test fake ortho" begin
+    latin = Orthography.Latin23()
+    @test codepoints(latin) == "UVIJ"
 end
