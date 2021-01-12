@@ -1,3 +1,5 @@
 @testset "Test enumeration of basic token types" begin
-    #@test alphabetictoken < numerictoken
+    alpha = Orthography.AlphabeticToken()
+    @test isa(alpha,  Orthography.AlphabeticToken)
+    @test typeof(alpha) <: TokenCategory
 end

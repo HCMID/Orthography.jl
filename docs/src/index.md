@@ -7,6 +7,7 @@ CurrentModule = Orthography
 ## Types
 ```@docs
 OrthographicSystem
+TokenCategory
 SimpleAscii
 ```
 

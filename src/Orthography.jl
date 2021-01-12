@@ -2,11 +2,15 @@ module Orthography
 
 using Documenter, DocStringExtensions
 
-export OrthographicSystem, SimpleAscii
+export OrthographicSystem, TokenCategory
+export SimpleAscii
 export codepoints, tokentypes
 
 "An abstract type for orthographic systems."
 abstract type OrthographicSystem end
+
+"An abstract type for token categories."
+abstract type TokenCategory end
 
 """
 $(SIGNATURES)
@@ -27,6 +31,9 @@ end
 
 # A specific implementation of an OrthoographicSystem
 include("simpleAscii.jl")
+# Some common token categories
+include("basicTypes.jl")
+
 
 
 
