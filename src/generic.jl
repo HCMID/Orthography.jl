@@ -28,7 +28,8 @@ True if all chars in `s` are valid.
 """
 function validstring(ortho::OrthographicSystem, s)::Bool
     chars = split(s, "")
-    #false in validchar.(ortho, chars)
+    tf = map(c -> validchar(ortho,c), chars)
+    !(false in tf)
 end
 
 
