@@ -6,7 +6,7 @@ export OrthographicSystem
 export GenericOrthography, SimpleAscii
 export TokenCategory
 export AlphabeticToken, NumericToken, PunctuationToken
-export codepoints, tokentypes
+export codepoints, tokentypes, validchar, validstring
 
 "An abstract type for orthographic systems."
 abstract type OrthographicSystem end
