@@ -29,3 +29,4 @@ in the `SimpleAscii` orthography.
 function tokentypes(ortho::SimpleAscii)
     [AlphabeticToken(), NumericToken(), PunctuationToken()]
 end
+
