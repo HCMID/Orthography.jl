@@ -30,3 +30,8 @@ function tokentypes(ortho::SimpleAscii)
     [AlphabeticToken(), NumericToken(), PunctuationToken()]
 end
 
+function tokenize(ortho::SimpleAscii, s::AbstractString, tokens::Array{OrthographicToken}=[])
+    unanalyzed = UnanalyzedToken()
+    wsdelimited = split(s)
+    map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
+end
