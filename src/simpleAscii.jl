@@ -1,18 +1,29 @@
-
-
-
-
-
 "An orthographic system for a basic alphabetic subset of the ASCII characater set."
 struct SimpleAscii <: OrthographicSystem
+    codepoints
+    tokencategories
+    tokenizer
 end
+
+"Construct a `SimpleAscii` with correct member values."
+function simpleAscii()
+    SimpleAscii(
+        asciiCPs(),
+        basicTypes(),
+        asciiTokenizer
+    )
+end
+
+
+
+
 
 """
 $(SIGNATURES)
 Define a string including all valid code points
 in the `SimpleAscii` orthography.
 """
-function codepoints(ortho::SimpleAscii)
+function asciiCPs()
     alphabet = "abcdefghijklmnopqrstuvwxyz"
     alphaupper = uppercase(alphabet)
     punct = "-.,:;!?"
@@ -26,11 +37,15 @@ $(SIGNATURES)
 Define an Array with all valid `TokenCategory`systems
 in the `SimpleAscii` orthography.
 """
-function tokentypes(ortho::SimpleAscii)
+function basicTypes()
     [AlphabeticToken(), NumericToken(), PunctuationToken()]
 end
 
-function tokenize(ortho::SimpleAscii, s::AbstractString, tokens::Array{OrthographicToken}=[])
+"""
+$(SIGNATURES)
+Parse a string into an array of classified tokens.
+"""
+function asciiTokenizer(s::AbstractString)
     unanalyzed = UnanalyzedToken()
     wsdelimited = split(s)
     map(t -> OrthographicToken(t, unanalyzed), wsdelimited)

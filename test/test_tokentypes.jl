@@ -5,7 +5,7 @@
 end
 
 @testset "Test SimpleAscii token array" begin
-    tokencats = tokentypes(SimpleAscii())
+    tokencats = tokentypes(simpleAscii())
     @test isa(tokencats, Array{TokenCategory})
     @test AlphabeticToken() in tokencats
 end
