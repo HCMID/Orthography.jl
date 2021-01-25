@@ -1,14 +1,14 @@
 
 
 @testset "Test constructing a generic orthography" begin
-    ortho = GenericOrthography("abc", [Orthography.AlphabeticToken], Orthography.asciiTokenizer)
+    ortho = GenericOrthography("abc", [Orthography.LexicalToken], Orthography.asciiTokenizer)
     @test isa(ortho, GenericOrthography)
     @test codepoints(ortho) == "abc"
-    @test tokentypes(ortho) == [Orthography.AlphabeticToken]
+    @test tokentypes(ortho) == [Orthography.LexicalToken]
 end
 
 @testset "Test validing character usage" begin
-    ortho = GenericOrthography("abc", [Orthography.AlphabeticToken], Orthography.asciiTokenizer)
+    ortho = GenericOrthography("abc", [Orthography.LexicalToken], Orthography.asciiTokenizer)
     @test validchar(ortho, "a")
     #@test validchar(ortho, 'a')
     @test validstring(ortho, "baa")
@@ -29,7 +29,7 @@ end
 
 @testset "Test tokenization" begin
     sentence = "Now is the time for all long sentences to end."
-    ortho = GenericOrthography("abc", [Orthography.AlphabeticToken], Orthography.asciiTokenizer)
+    ortho = GenericOrthography("abc", [Orthography.LexicalToken], Orthography.asciiTokenizer)
     tokens = ortho.tokenizer(sentence)
     expectedcount = 10
     @test length(tokens) == expectedcount

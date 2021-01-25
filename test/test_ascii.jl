@@ -4,7 +4,7 @@
     ortho = simpleAscii()
     @test isa(ortho, SimpleAscii)
     @test codepoints(ortho) == "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.,:;!?'\"()[]"
-    @test tokentypes(ortho) == [AlphabeticToken(), NumericToken(), PunctuationToken()]
+    @test tokentypes(ortho) == [LexicalToken(), NumericToken(), PunctuationToken()]
 end
 
 @testset "Test validing character usage" begin

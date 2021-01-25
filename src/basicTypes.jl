@@ -1,7 +1,7 @@
 # Some commonly used `TokenCategory`s
 
 "Category of alphabetic tokens."
-struct AlphabeticToken <: TokenCategory end
+struct LexicalToken <: TokenCategory end
 
 "Category of alphabetic tokens."
 struct NumericToken <: TokenCategory end
