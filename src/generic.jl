@@ -1,9 +1,4 @@
-
-"A generic model of an orthographic system implementation."
-struct GenericOrthography <: OrthographicSystem
-    codepoints
-    tokencategories
-end
+# Generic functions.
 
 """
 $(SIGNATURES)
@@ -12,7 +7,6 @@ Generic function to retrieve `codepoints` member of an `OrthographicSystem`.
 function codepoints(ortho::T) where {T <: OrthographicSystem}
     ortho.codepoints
 end
-
 
 """
 $(SIGNATURES)
@@ -32,7 +26,6 @@ function validstring(ortho::OrthographicSystem, s)::Bool
     !(false in tf)
 end
 
-
 """
 $(SIGNATURES)
 True if `ch` appears in list of all valid characters for this orthography.
@@ -43,44 +36,21 @@ function validchar(ortho::OrthographicSystem, ch::AbstractString)::Bool
 end
 
 
-"""
-$(SIGNATURES)
-Remove all trailing characters belong to list in `arr`,
-and collect them.  This is useful to collect punctuation
-from a token, for example.
-"""
-function collecttail(s::AbstractString, arr, stripped=[])
-    lastch = string(last(s))
-    if occursin(lastch,arr)
-        push!(stripped, lastch)
-        trimmed = chop(s, head=0, tail=1)
-        collecttail(trimmed, arr, stripped)
-    else
-        join(stripped,"")
-    end
+"Tokenize `s` using the tokenizer of the given orthographic system."
+function tokenize(ortho::OrthographicSystem, s::AbstractString)
+    ortho.tokenizer(s)
+end
+
+"A generic model of an orthographic system implementation."
+struct GenericOrthography <: OrthographicSystem
+    codepoints
+    tokencategories
+    tokenizer
 end
 
 
-"""
-$(SIGNATURES)
-Remove all trailing characters belong to list in `arr`,
-and and return the trimmed string.  This is useful to remove punctuation
-from a token, for example.
-"""
-function trimtail(s::AbstractString, arr)
-    lastch = string(last(s))
-    if occursin(lastch,arr)
-        trimmed = chop(s, head=0, tail=1)
-        trimtail(trimmed, arr)
-    else
-        s
-    end
-end
 
-
-"Singleton type for unanalyzed tokens."
-struct UnanalyzedToken <: TokenCategory end
-
+#=
 """
 $(SIGNATURES)
 Mindlessly split `s` on white space. 
@@ -91,3 +61,4 @@ function tokenize(ortho::OrthographicSystem, s::AbstractString, tokens::Array{Or
     wsdelimited = split(s)
     map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
 end
+=#

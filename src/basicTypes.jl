@@ -9,3 +9,6 @@ struct NumericToken <: TokenCategory end
 "Category of punctuation tokens."
 struct PunctuationToken <: TokenCategory end
 
+
+"Singleton type for unanalyzed tokens."
+struct UnanalyzedToken <: TokenCategory end
