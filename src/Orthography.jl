@@ -6,7 +6,7 @@ export OrthographicSystem
 export TokenCategory, OrthographicToken
 export GenericOrthography
 export SimpleAscii
-export AlphabeticToken, NumericToken, PunctuationToken
+export LexicalToken, NumericToken, PunctuationToken
 export codepoints, tokentypes, validchar, validstring
 #export tokenize
 export simpleAscii

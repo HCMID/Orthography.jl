@@ -38,7 +38,7 @@ Define an Array with all valid `TokenCategory`systems
 in the `SimpleAscii` orthography.
 """
 function basicTypes()
-    [AlphabeticToken(), NumericToken(), PunctuationToken()]
+    [LexicalToken(), NumericToken(), PunctuationToken()]
 end
 
 """
