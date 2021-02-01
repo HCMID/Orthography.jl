@@ -3,13 +3,15 @@ module Orthography
 using Documenter, DocStringExtensions
 
 export OrthographicSystem
-export TokenCategory, OrthographicToken
-export GenericOrthography
-export SimpleAscii
-export LexicalToken, NumericToken, PunctuationToken
 export codepoints, tokentypes, validchar, validstring
-#export tokenize
-export simpleAscii
+
+export TokenCategory, OrthographicToken
+export LexicalToken, NumericToken, PunctuationToken
+
+export GenericOrthography
+export SimpleAscii, LiteraryGreek
+export simpleAscii, literaryGreek
+
 
 "An abstract type for orthographic systems."
 abstract type OrthographicSystem end
@@ -25,13 +27,12 @@ struct OrthographicToken
 end
 
 
-include("generic.jl")
-include("simpleAscii.jl")
 include("basicTypes.jl")
 include("utils.jl")
+include("generic.jl")
 
-
-
+include("simpleAscii.jl")
+include("literaryGreek.jl")
 
 
 end # module
