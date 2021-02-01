@@ -1,5 +1,18 @@
+import Base.show
 
 
+#Base.show(io::IO, gs::Orthography.GreekString) = print(io, gs.raw)
+
+
+struct GreekString
+    raw::AbstractString
+end
+#=
+function show(io::IO = stdout, gs::GreekString = GreekString(""))
+    tidy = replace(gs, "~" => ":")
+    print(io, tidy)
+end
+=#
 "An orthographic system for encoding the Lycian alphabet primarily using ASCII characaters."
 struct LiteraryGreek <: OrthographicSystem
     codepoints

@@ -9,6 +9,7 @@ export TokenCategory, OrthographicToken
 export LexicalToken, NumericToken, PunctuationToken
 
 export GenericOrthography
+export GreekString
 export SimpleAscii, LiteraryGreek
 export simpleAscii, literaryGreek
 
