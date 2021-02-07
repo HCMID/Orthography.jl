@@ -48,17 +48,3 @@ struct GenericOrthography <: OrthographicSystem
     tokenizer
 end
 
-
-
-#=
-"""
-$(SIGNATURES)
-Mindlessly split `s` on white space. 
-This should be overriden for any `OrthographicSystem` you define.
-"""
-function tokenize(ortho::OrthographicSystem, s::AbstractString, tokens::Array{OrthographicToken}=[])
-    unanalyzed = UnanalyzedToken()
-    wsdelimited = split(s)
-    map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
-end
-=#
