@@ -17,6 +17,9 @@ makedocs(
             "man/index.md",
             "man/internals.md"
         ]
-
     ]
     )
+
+deploydocs(
+    repo = "github.com/HCMID/Orthography.jl.git",
+)    
