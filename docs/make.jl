@@ -19,3 +19,7 @@ makedocs(
         ]
     ]
     )
+
+deploydocs(
+    repo = "github.com/HCMID/Orthography.jl.git",
+)    
