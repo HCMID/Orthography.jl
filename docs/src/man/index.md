@@ -1,20 +1,27 @@
-# API documentation
+# Exported structs and functions
 
 ## Types
+
 ```@docs
 OrthographicSystem
 TokenCategory
-GenericOrthography
-SimpleAscii
+LexicalToken
+NumericToken
+PunctuationToken
 ```
 
 ## Functions
 ```@docs
 codepoints(ortho::T) where {T <: OrthographicSystem}
 tokentypes(ortho::T) where {T <: OrthographicSystem}
+
+validchar
+validstring
 ```
 
+## Generic implementations
 
-## Index
-```@index
+```@docs
+GenericOrthography
+SimpleAscii
 ```

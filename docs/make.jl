@@ -13,7 +13,9 @@ makedocs(
         "Guide" => [
             "guide/guide.md"
         ],
-        "API documenatation" => "man/index.md"
-
+        "API documentation" => [
+            "man/index.md",
+            "man/internals.md"
+        ]
     ]
     )

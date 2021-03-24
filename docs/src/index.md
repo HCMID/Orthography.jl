@@ -7,7 +7,8 @@ The Orthography package supports working with rigorously defined scholarly editi
 - tokens are composed from an explicitly defined character set or set of code points
 - the semantics of the character completely define how to tokenize text in the orthographic system 
 
-Orthography.jl was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club.
+Orthography.jl was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club (MID).
+
 
 ## Contents
 

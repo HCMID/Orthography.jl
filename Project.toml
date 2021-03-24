@@ -1,7 +1,8 @@
 name = "Orthography"
 uuid = "0b4c9448-09b0-4e78-95ea-3eb3328be36d"
 authors = ["Neel Smith <dnsmith.neel@gmail.com>"]
-version = "0.5.0"
+version = "0.6.0"
+
 
 [deps]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
