@@ -8,4 +8,3 @@ include("test_codepoints.jl")
 include("test_generics.jl")
 include("test_ascii.jl")
 
-#include("test_litgreek.jl")
