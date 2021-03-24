@@ -15,9 +15,6 @@ function simpleAscii()
 end
 
 
-
-
-
 """
 $(SIGNATURES)
 Define a string including all valid code points

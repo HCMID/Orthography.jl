@@ -9,10 +9,9 @@ export TokenCategory, OrthographicToken
 export LexicalToken, NumericToken, PunctuationToken
 
 export GenericOrthography
-export GreekString
-export SimpleAscii, LiteraryGreek
-export simpleAscii, literaryGreek
-
+export SimpleAscii #, LiteraryGreek
+export simpleAscii #, literaryGreek
+# export GreekString
 
 "An abstract type for orthographic systems."
 abstract type OrthographicSystem end
@@ -33,7 +32,7 @@ include("utils.jl")
 include("generic.jl")
 
 include("simpleAscii.jl")
-include("literaryGreek.jl")
+#include("literaryGreek.jl")
 
 
 end # module
