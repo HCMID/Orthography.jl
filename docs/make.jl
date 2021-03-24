@@ -17,6 +17,5 @@ makedocs(
             "man/index.md",
             "man/internals.md"
         ]
-
     ]
     )
