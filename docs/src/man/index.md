@@ -10,14 +10,11 @@ NumericToken
 PunctuationToken
 ```
 
-
-
-
-
 ## Functions
 ```@docs
 codepoints(ortho::T) where {T <: OrthographicSystem}
 tokentypes(ortho::T) where {T <: OrthographicSystem}
+
 validchar
 validstring
 ```
@@ -27,8 +24,4 @@ validstring
 ```@docs
 GenericOrthography
 SimpleAscii
-```
-
-## Index
-```@index
 ```

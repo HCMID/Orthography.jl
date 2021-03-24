@@ -9,6 +9,7 @@ The Orthography package supports working with rigorously defined scholarly editi
 
 Orthography.jl was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club (MID).
 
+
 ## Contents
 
 ```@contents
