@@ -1,4 +1,5 @@
-![build](https://github.com/HCMID/Orthography.jl/actions/workflows/Documenter.yml/badge.svg)
+![build](https://github.com/HCMID/Orthography.jl/actions/workflows/Documentation.yml/badge.svg)
+
 
 # Orthography.jl
 
