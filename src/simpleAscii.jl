@@ -40,7 +40,7 @@ end
 
 """
 $(SIGNATURES)
-Parse a string into an array of classified tokens.
+Parse a string on whitespace into an array of unanalyzed tokens.
 """
 function asciiTokenizer(s::AbstractString)
     unanalyzed = UnanalyzedToken()
