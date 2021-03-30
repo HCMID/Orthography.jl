@@ -23,9 +23,12 @@ function collecttail(s::AbstractString, arr, stripped=[])
 end
 
 """
-$(SIGNATURES)
 Remove all trailing characters belong to list in `arr`,
-and and return the trimmed string.  This is useful to remove punctuation
+and and return the trimmed string.  
+
+$(SIGNATURES)
+
+This is useful to remove punctuation
 from a token, for example.
 """
 function trimtail(s::AbstractString, arr)
@@ -44,3 +47,11 @@ function trimtail(s::AbstractString, arr)
     end
 end
 
+
+"""Shorthand function to normalize string `s` to Unicode form NFKC.
+
+$(SIGNATURES)
+"""
+function nfkc(s::AbstractString)
+    Unicode.normalize(s, :NFKC)
+end
