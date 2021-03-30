@@ -1,9 +1,11 @@
 module Orthography
 
+using Unicode
 using Documenter, DocStringExtensions
 
 export OrthographicSystem
 export codepoints, tokentypes, validchar, validstring
+export nfkc
 
 export TokenCategory, OrthographicToken
 export LexicalToken, NumericToken, PunctuationToken
@@ -12,21 +14,7 @@ export GenericOrthography
 export SimpleAscii
 export simpleAscii 
 
-
-"An abstract type for orthographic systems."
-abstract type OrthographicSystem end
-
-
-"An abstract type for token categories."
-abstract type TokenCategory end
-
-"A classified string of text."
-struct OrthographicToken
-    text::AbstractString
-    tokencategory::TokenCategory
-end
-
-
+include("ortho.jl")
 include("basicTypes.jl")
 include("utils.jl")
 include("generic.jl")
