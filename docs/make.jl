@@ -1,14 +1,14 @@
 using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
-push!(LOAD_PATH,"../")
+#push!(LOAD_PATH,"./src/")
 
 
 using Documenter, DocStringExtensions
 using Orthography
 
 makedocs(
-    sitename = "Orthography.jl",
+    sitename = "Orthography",
     pages = [
         "Home" => "index.md",
         "Guide" => [

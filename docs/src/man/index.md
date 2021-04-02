@@ -1,4 +1,4 @@
-# Exported structs and functions
+# Exported types and functions
 
 ## Types
 
@@ -22,6 +22,8 @@ tokentypes(ortho::T) where {T <: OrthographicSystem}
 
 validchar
 validstring
+tokenize
+nfkc
 ```
 
 ## Generic implementations
@@ -29,4 +31,5 @@ validstring
 ```@docs
 GenericOrthography
 SimpleAscii
+simpleAscii
 ```

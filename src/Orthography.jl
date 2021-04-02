@@ -4,7 +4,7 @@ using Unicode
 using Documenter, DocStringExtensions
 
 export OrthographicSystem
-export codepoints, tokentypes, validchar, validstring
+export validchar, validstring,  tokenize, codepoints, tokentypes
 export nfkc
 
 export TokenCategory, OrthographicToken

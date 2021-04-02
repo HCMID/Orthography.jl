@@ -1,6 +1,14 @@
 # Internals
 
 ```@docs
-Orthography.collecttail(s::AbstractString, arr, stripped=[])
-Orthography.trimtail(s::AbstractString, arr)
+Orthography.collecttail
+Orthography.trimtail
+Orthography.basicTypes
+Orthography.asciiTokenizer
+Orthography.splitAsciiPunctuation
+Orthography.asciialphabetic
+Orthography.asciinumeric
+Orthography.asciipunctuation
+Orthography.asciiCPs
+Orthography.asciitokenforstring
 ```
