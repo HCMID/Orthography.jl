@@ -42,7 +42,7 @@ codepoints(orthography)
 
 # output
 
-"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.,:;!?'\"()[]"
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.,:;!?'\"()[]"
 ```
 
 

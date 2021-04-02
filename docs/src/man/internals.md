@@ -3,7 +3,12 @@
 ```@docs
 Orthography.collecttail
 Orthography.trimtail
-Orthography.asciiCPs
 Orthography.basicTypes
 Orthography.asciiTokenizer
+Orthography.splitAsciiPunctuation
+Orthography.asciialphabetic
+Orthography.asciinumeric
+Orthography.asciipunctuation
+Orthography.asciiCPs
+Orthography.asciitokenforstring
 ```
