@@ -1,24 +1,24 @@
 # Generic functions.
 
-"""
+"""Generic function to retrieve `codepoints` member of an `OrthographicSystem`.
+
 $(SIGNATURES)
-Generic function to retrieve `codepoints` member of an `OrthographicSystem`.
 """
 function codepoints(ortho::T) where {T <: OrthographicSystem}
     ortho.codepoints
 end
 
-"""
+"""Generic function to retrieve `tokentypes` member of an `OrthographicSystem`.
+
 $(SIGNATURES)
-Generic function to retrieve `tokentypes` member of an `OrthographicSystem`.
 """
 function tokentypes(ortho::T) where {T <: OrthographicSystem}
     ortho.tokencategories
 end
 
-"""
+"""True if all chars in `s` are valid.
+
 $(SIGNATURES)
-True if all chars in `s` are valid.
 """
 function validstring(ortho::OrthographicSystem, s)::Bool
     chars = split(s, "")
@@ -26,9 +26,12 @@ function validstring(ortho::OrthographicSystem, s)::Bool
     !(false in tf)
 end
 
-"""
+"""True if `ch` appears in list of all valid characters for this orthography.
+
 $(SIGNATURES)
-True if `ch` appears in list of all valid characters for this orthography.
+
+`ch` is a string possibly including more than one `char` but representing 
+a single character in the orthographic system `ortho`.
 """
 function validchar(ortho::OrthographicSystem, ch::AbstractString)::Bool
     cplist = split(codepoints(ortho),"")
@@ -36,7 +39,11 @@ function validchar(ortho::OrthographicSystem, ch::AbstractString)::Bool
 end
 
 
-"Tokenize `s` using the tokenizer of the given orthographic system."
+"""
+Tokenize `s` using the tokenizer of the given orthographic system.
+
+$(SIGNATURES)
+"""
 function tokenize(ortho::OrthographicSystem, s::AbstractString)
     ortho.tokenizer(s)
 end

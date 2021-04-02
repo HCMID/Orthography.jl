@@ -5,7 +5,10 @@ struct SimpleAscii <: OrthographicSystem
     tokenizer
 end
 
-"Construct a `SimpleAscii` with correct member values."
+"""Construct a `SimpleAscii` with correct member values.
+
+$(SIGNATURES)
+"""
 function simpleAscii()
     SimpleAscii(
         asciiCPs(),
@@ -15,10 +18,10 @@ function simpleAscii()
 end
 
 
-"""
-$(SIGNATURES)
-Define a string including all valid code points
+"""Define a string including all valid code points
 in the `SimpleAscii` orthography.
+
+$(SIGNATURES)
 """
 function asciiCPs()
     alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -29,18 +32,18 @@ function asciiCPs()
     alphabet * alphaupper * punct * quotes * brackets
 end
 
-"""
-$(SIGNATURES)
-Define an Array with all valid `TokenCategory`systems
+"""Define an Array with all valid `TokenCategory`systems
 in the `SimpleAscii` orthography.
+
+$(SIGNATURES)
 """
 function basicTypes()
     [LexicalToken(), NumericToken(), PunctuationToken()]
 end
 
-"""
+"""Parse a string on whitespace into an array of unanalyzed tokens.
+
 $(SIGNATURES)
-Parse a string on whitespace into an array of unanalyzed tokens.
 """
 function asciiTokenizer(s::AbstractString)
     unanalyzed = UnanalyzedToken()
