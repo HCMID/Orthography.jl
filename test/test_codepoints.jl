@@ -6,7 +6,6 @@
     @test genericcps ==  ['a', 'b', 'c', '!']
 
     asciicps = codepoints(simpleAscii())
-    expected = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-.,:;!?'\"()[]"
+    expected = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[]"
     @test asciicps == expected
-
 end
