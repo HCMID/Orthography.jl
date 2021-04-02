@@ -46,7 +46,83 @@ end
 $(SIGNATURES)
 """
 function asciiTokenizer(s::AbstractString)
-    unanalyzed = UnanalyzedToken()
+    lexical = LexicalToken()
+    punctuation = PunctuationToken()
     wsdelimited = split(s)
-    map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
+    
+    
+    
+    #map(t -> OrthographicToken(t, unanalyzed), wsdelimited)
+
+#=
+    depunctuated = map(s -> splitPunctuation(s), wsdelimited)
+    tknstrings = collect(Iterators.flatten(depunctuated))
+    tkns = map(t -> tokenforstring(t), tknstrings)
+
+
+    "Split off any trailing punctuation and return an Array of leading strim + trailing punctuation."
+function splitPunctuation(s::AbstractString)
+    punct = Orthography.collecttail(s, LatinOrthography.punctuation())
+    trimmed = Orthography.trimtail(s, LatinOrthography.punctuation())
+    filter(s -> ! isempty(s), [trimmed, punct])
+end
+    =#
+end
+
+
+function asciitokenforstring(s::AbstractString)
+    if isAsciiNumeric(s)
+        OrthographicToken(s, NumericToken())
+    elseif isAsciiAlphabetic(s)
+        OrthographicToken(s, LexicalToken())
+    elseif isAsciiPunctuation(s)
+        OrthographicToken(s, PunctuationToken())
+    else
+        OrthographicToken(s, Orthography.UnanalyzedToken())
+    end
+end
+
+
+
+
+
+"True if all characters in s are alphabetic."
+function isAsciiAlphabetic(s::AbstractString)
+    chlist = split(s,"")
+    alphas =  alphabetic()
+    tfs = []
+    for i in collect(eachindex(s)) 
+        push!(tfs, occursin(s[i], alphas))
+    end
+    nogood = false in tfs
+   
+    !nogood
+end
+
+"True if all characters in s are punctuatoin."
+function isAsciiPunctuation(s::AbstractString)::Bool
+    chlist = split(s,"")
+    puncts =  punctuation()
+    tfs = []
+    for i in collect(eachindex(s)) 
+        push!(tfs, occursin(s[i], puncts))
+    end
+    nogood = false in tfs
+   
+    !nogood
+end
+
+
+
+"True if all characters in s are punctuatoin."
+function isAsciiNumeric(s::AbstractString)::Bool
+    chlist = split(s,"")
+    puncts =  punctuation()
+    tfs = []
+    for i in collect(eachindex(s)) 
+        push!(tfs, occursin(s[i], puncts))
+    end
+    nogood = false in tfs
+   
+    !nogood
 end
