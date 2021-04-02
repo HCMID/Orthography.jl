@@ -1,4 +1,4 @@
-# Exported structs and functions
+# Exported types and functions
 
 ## Types
 

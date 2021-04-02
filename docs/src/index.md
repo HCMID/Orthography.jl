@@ -1,4 +1,4 @@
-# Orthography.jl
+# Orthography
 
 The Orthography package supports working with rigorously defined scholarly editions of digital texts adhering to a specified orthography.  
 
