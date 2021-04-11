@@ -114,9 +114,6 @@ function asciitokenforstring(s::AbstractString)
 end
 
 
-
-
-
 """True if all characters in `s` are alphabetic.
 
 $(SIGNATURES)
@@ -175,4 +172,21 @@ function isAsciiNumeric(s::AbstractString)::Bool
     end
     hasdigit = true in digitchars
     hasdigit && !nogood
+end
+
+"""Implement tokentypes function for SimpleAscii.
+
+$(SIGNATURES)
+"""
+function tokentypes(ortho::SimpleAscii)
+    ortho.tokencategories
+end
+
+
+"""Implement codepoints function for SimpleAscii.
+
+$(SIGNATURES)
+"""
+function codepoints(ortho::SimpleAscii)
+    ortho.codepoints
 end
