@@ -21,7 +21,7 @@ Subtypes of an `OrthographicSystem` must implement five functions:
 
 The `SimpleAscii` orthography implements these functions for a basic alphabetic subset of the ASCII character set. The `simpleAscii` function creates a `SimpleAscii` orthography for you.
 
-!!! warn
+!!! warning
     `SimpleAscii` is meant only to demonstrate the functionality of an orthographic system.  Its definition of
     numeric tokens is naive and not suitable for real-world use.
 
