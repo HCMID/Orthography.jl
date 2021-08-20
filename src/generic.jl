@@ -84,3 +84,22 @@ function tokenize(ortho::T, cn::CitableNode) where {T <: OrthographicSystem}
     end
     citabletokens
 end
+
+
+
+
+
+"""
+Tokenize `c` using the tokenizer of the given orthographic system.
+
+$(SIGNATURES)
+
+The return value is a list of pairings of a `CitableNode` and a token category.  The citable node is citable at the level of the token.
+"""
+function tokenize(ortho::T, c::CitableTextCorpus) where {T <: OrthographicSystem}
+    tkns = []
+    for cn in c.corpus
+        push!(tkns, tokenize(ortho, cn))
+    end
+    tkns  |> Iterators.flatten |> collect
+end

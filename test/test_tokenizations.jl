@@ -25,3 +25,17 @@ end
     @test tkns[1][1].urn == CtsUrn("urn:cts:dummy:unittests.v1:1.1")
     @test tkns[1][2] == LexicalToken()
 end
+
+
+@testset "Test tokenizing a CitableTextCorpus" begin
+    ascii = simpleAscii()
+
+    urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
+    txt = "Now is the time." 
+    cn1 = CitableNode(urn,txt)
+    cn2 = CitableNode(CtsUrn("urn:cts:dummy:unittests.v1:2"), "And then the time is past.")
+    c = CitableTextCorpus([cn1, cn2])
+
+    tkns = tokenize(ascii, c)
+    @test length(tkns) == 12
+end
