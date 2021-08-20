@@ -3,6 +3,9 @@ module Orthography
 using Unicode
 using Documenter, DocStringExtensions
 
+using CitableText, CitableCorpus
+
+
 export OrthographicSystem
 export validchar, validstring,  tokenize, codepoints, tokentypes
 export nfkc
