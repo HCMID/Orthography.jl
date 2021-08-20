@@ -45,9 +45,42 @@ end
 Tokenize `s` using the tokenizer of the given orthographic system.
 
 $(SIGNATURES)
+
+The return value is a list of `OrthographicTokens`.
 """
 function tokenize(ortho::T, s::AbstractString) where {T <: OrthographicSystem}
     ortho.tokenizer(s)
 end
 
 
+
+"""
+Tokenize `cn` using the tokenizer of the given orthographic system.
+
+$(SIGNATURES)
+
+The return value is a list of pairings of a `CitableNode` and a token category.  The citable node is citable at the level of the token.
+"""
+function tokenize(ortho::T, cn::CitableNode) where {T <: OrthographicSystem}
+
+    tkns = ortho.tokenizer(cn.text)
+
+    citabletokens = []
+    n1 = 0 # Int value before 1
+    n2 = 96 # Char value before 'a'
+    for tkn in tkns
+        if tkn.tokencategory == Orthography.LexicalToken()
+            n1 = n1 + 1
+            n2 = 96
+            u = CtsUrn(string(cn.urn.urn, ".", n1))
+            push!(citabletokens, (CitableNode(u, tkn.text), tkn.tokencategory))
+            
+        else
+            n2 = n2 + 1
+            u = CtsUrn(string(cn.urn.urn, ".", n1, Char(n2)))
+            push!(citabletokens, (CitableNode(u, tkn.text), tkn.tokencategory))
+           
+        end
+    end
+    citabletokens
+end
