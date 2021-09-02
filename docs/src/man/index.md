@@ -17,8 +17,8 @@ PunctuationToken
 Public functions implemented for all subtypes of `OrthographicSystem`.
 
 ```@docs
-codepoints(ortho::T) where {T <: OrthographicSystem}
-tokentypes(ortho::T) where {T <: OrthographicSystem}
+codepoints
+tokentypes
 
 validchar
 validstring
