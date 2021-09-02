@@ -3,7 +3,7 @@
 "Category of alphabetic tokens."
 struct LexicalToken <: TokenCategory end
 
-"Category of alphabetic tokens."
+"Category of numeric tokens."
 struct NumericToken <: TokenCategory end
 
 "Category of punctuation tokens."

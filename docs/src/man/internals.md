@@ -1,8 +1,15 @@
-# Internals
+# API documentation: internals
+
+## Generic utility functions
 
 ```@docs
 Orthography.collecttail
 Orthography.trimtail
+```
+
+## Functions supporting the `SimpleAscii` implementation
+
+```@docs
 Orthography.basicTypes
 Orthography.asciiTokenizer
 Orthography.splitAsciiPunctuation

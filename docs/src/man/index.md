@@ -1,4 +1,4 @@
-# Exported types and functions
+# API documentation: exported types and functions
 
 ## Types
 
@@ -19,17 +19,20 @@ Public functions implemented for all subtypes of `OrthographicSystem`.
 ```@docs
 codepoints
 tokentypes
-
 validchar
 validstring
 tokenize
+```
+
+## Utilities
+
+```@docs
 nfkc
 ```
 
-## Generic implementations
+## Example implementation
 
 ```@docs
-GenericOrthography
 SimpleAscii
 simpleAscii
 ```

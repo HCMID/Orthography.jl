@@ -1,4 +1,4 @@
-# User's guide
+# User's guide: a simple example
 
 ```@meta
 CurrentModule = Orthography
@@ -58,7 +58,7 @@ codepoints(orthography)
 
 
 
-```jldoctest simpleseries
+```
 tokentypes(orthography)
 
 # output

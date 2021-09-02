@@ -1,6 +1,6 @@
 # Generic functions.
 
-"""Generic function to retrieve `codepoints` member of an `OrthographicSystem`.
+"""Generic function to retrieve list of codepoints for an `OrthographicSystem`.
 
 $(SIGNATURES)
 """
@@ -9,7 +9,7 @@ function codepoints(ortho::T) where {T <: OrthographicSystem}
     nothing
 end
 
-"""Generic function to retrieve `tokentypes` member of an `OrthographicSystem`.
+"""Generic function to retrieve a list of tokentypes for an `OrthographicSystem`.
 
 $(SIGNATURES)
 """
@@ -32,7 +32,7 @@ end
 
 $(SIGNATURES)
 
-`ch` is a string possibly including more than one `char` but representing 
+`ch` is a string possibly including more than one Julia `Char` but representing 
 a single character in the orthographic system `ortho`.
 """
 function validchar(ortho::T, ch::AbstractString)::Bool where {T <: OrthographicSystem}
@@ -42,7 +42,7 @@ end
 
 
 """
-Tokenize `s` using the tokenizer of the given orthographic system.
+Tokenize string `s` using the tokenizer of the given orthographic system.
 
 $(SIGNATURES)
 
@@ -55,7 +55,7 @@ end
 
 
 """
-Tokenize `cn` using the tokenizer of the given orthographic system.
+Tokenize citable node `cn` using the tokenizer of the given orthographic system.
 
 $(SIGNATURES)
 
@@ -90,7 +90,7 @@ end
 
 
 """
-Tokenize `c` using the tokenizer of the given orthographic system.
+Tokenize corpus `c` using the tokenizer of the given orthographic system.
 
 $(SIGNATURES)
 
@@ -102,4 +102,16 @@ function tokenize(ortho::T, c::CitableTextCorpus) where {T <: OrthographicSystem
         push!(tkns, tokenize(ortho, cn))
     end
     tkns  |> Iterators.flatten |> collect
+end
+
+
+"""
+Create a histogram 
+
+$(SIGNATURES)
+"""
+function corpushisto(ortho::T, c::CitableTextCorpus, tokenType) where {T <: OrthographicSystem}
+
+    corpustokens = tokens(ortho, c)
+
 end
