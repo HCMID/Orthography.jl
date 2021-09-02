@@ -17,8 +17,8 @@ using CitableText, CitableCorpus
 
 corpus = CitableTextCorpus([
         CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"A horse is a horse, of course, of course,"),
-        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"And no one can talk to a horse of course,"),
-        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"That is, of course, unless the horse is the famous Mr. Ed."),
+        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:2"),"And no one can talk to a horse of course,"),
+        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
 histo_all = corpus_histo(simpleAscii(), corpus)
 histo_all["course"]
