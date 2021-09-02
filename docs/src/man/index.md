@@ -27,6 +27,7 @@ tokenize
 ## Utilities
 
 ```@docs
+corpus_histo
 nfkc
 ```
 

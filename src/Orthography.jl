@@ -4,10 +4,11 @@ using Unicode
 using Documenter, DocStringExtensions
 
 using CitableText, CitableCorpus
-
+using StatsBase
 
 export OrthographicSystem
 export validchar, validstring,  tokenize, codepoints, tokentypes
+export corpus_histo
 export nfkc
 
 export TokenCategory, OrthographicToken

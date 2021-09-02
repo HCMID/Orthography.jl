@@ -106,12 +106,21 @@ end
 
 
 """
-Create a histogram 
+Create an ordered dictionary of text values for tokens in corpus c.
+Optionally, filter the results to include only tokens of a specified type.
 
 $(SIGNATURES)
+
 """
-function corpushisto(ortho::T, c::CitableTextCorpus, tokenType) where {T <: OrthographicSystem}
+function corpus_histo(ortho::T, c::CitableTextCorpus, tokenType = nothing) where {T <: OrthographicSystem}
 
-    corpustokens = tokens(ortho, c)
-
+    corpustokens = tokenize(ortho, c)
+    if isnothing(tokenType)
+        txt = map(tkn -> tkn[1].text, corpustokens)
+        sort(countmap(txt), byvalue=true, rev=true)
+    else
+        filtered = filter(tkn -> tkn[2] == tokenType, corpustokens)
+        txt = map(tkn -> tkn[1].text, filtered)
+        sort(countmap(txt), byvalue=true, rev=true)
+    end
 end
