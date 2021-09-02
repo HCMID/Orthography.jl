@@ -1,4 +1,4 @@
-# Exported types and functions
+# API documentation: exported types and functions
 
 ## Types
 
@@ -17,19 +17,23 @@ PunctuationToken
 Public functions implemented for all subtypes of `OrthographicSystem`.
 
 ```@docs
-codepoints(ortho::T) where {T <: OrthographicSystem}
-tokentypes(ortho::T) where {T <: OrthographicSystem}
-
+codepoints
+tokentypes
 validchar
 validstring
 tokenize
+```
+
+## Utilities
+
+```@docs
+corpus_histo
 nfkc
 ```
 
-## Generic implementations
+## Example implementation
 
 ```@docs
-GenericOrthography
 SimpleAscii
 simpleAscii
 ```
