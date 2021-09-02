@@ -52,7 +52,6 @@ histo_lex["course"]
 But punctuation tokens will not be part of the histogram.
 
 ```jldoctest histo
-julia> 
 julia> histo_lex[","]
 ERROR: KeyError: key "," not found
 [...]
