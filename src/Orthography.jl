@@ -5,10 +5,11 @@ using Documenter, DocStringExtensions
 
 using CitableText, CitableCorpus
 using StatsBase
+using TypedTables
 
 export OrthographicSystem
 export validchar, validstring,  tokenize, codepoints, tokentypes
-export corpus_histo
+export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc
 
 export TokenCategory, OrthographicToken
@@ -22,6 +23,7 @@ include("ortho.jl")
 include("basicTypes.jl")
 include("utils.jl")
 include("generic.jl")
+include("corpus.jl")
 
 include("simpleAscii.jl")
 
