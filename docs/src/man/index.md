@@ -23,11 +23,16 @@ validchar
 validstring
 tokenize
 ```
-
-## Utilities
+Working with text corpora:
 
 ```@docs
 corpus_histo
+tokenvalues
+```
+
+Other utilities
+
+```@docs
 nfkc
 ```
 
