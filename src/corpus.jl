@@ -38,3 +38,24 @@ function tokenizedcorpus(orthography::T, c::CitableTextCorpus) where {T <: Ortho
     nodepairs = tokenize(orthography, c)
     map(pr -> pr[1], nodepairs) |> CitableTextCorpus
 end
+
+
+"""Compile an index of token values to token-level URNs.
+
+$(SIGNATURES)
+
+By default, `corpusindex` only includes lexical tokens.  Supply a token category to filter for, or `nothing` to index all token types.
+"""
+function corpusindex(orthography::T, c::CitableTextCorpus, filterby = LexicalToken())  where {T <: OrthographicSystem}
+    tokenpairs = []
+    if isnothing(filterby)
+        tokenpairs = tokenize(orthography, c)
+    else 
+        allpairs = tokenize(orthography, c)
+        tokenpairs = filter(pr -> pr[2] == filterby, allpairs)
+    end
+    urns = map(pr -> pr[1].urn, tokenpairs)
+    txtvals = map(pr -> pr[1].text, tokenpairs)
+    tbl = Table(tkn = txtvals, urn = urns)
+    TypedTables.group(getproperty(:tkn), getproperty(:urn), tbl)
+end
