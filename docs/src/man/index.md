@@ -27,7 +27,7 @@ Working with text corpora:
 
 ```@docs
 corpus_histo
-tokenvalues
+ 
 ```
 
 Other utilities

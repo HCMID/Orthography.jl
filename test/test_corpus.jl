@@ -1,5 +1,5 @@
 
-@testset "Test histogram of tokens by type" begin
+@testset "Test corpus functions" begin
     c = CitableTextCorpus([
         CitableNode(CtsUrn("urn:cts:dummy:ac.who:1"),"Costello: Well then who's on first?"),
         CitableNode(CtsUrn("urn:cts:dummy:ac.who:2"), "Abbott: Yes."),
@@ -24,4 +24,11 @@
     @test histo["Who"] == 4
     @test histo["Costello"] == 9
 
+    lexvalues = tokenvalues(simpleAscii(), c)
+    @test length(lexvalues) == 26
+    @test lexvalues[1] == "Costello"
+    @test lexvalues[2] == "Abbott"
+
+    tkncorpus = tokenizedcorpus(simpleAscii(), c)
+    @test typeof(tkncorpus) == CitableTextCorpus
 end

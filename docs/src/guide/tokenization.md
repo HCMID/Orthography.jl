@@ -47,7 +47,7 @@ tokens
 ```
 
 
-## CitableNodes
+## `CitableNode`s
 
 When you tokenize a `CitableNode`, the result is a list of `CitableNode`s paired with token categories.  The text value of each node is the token, and the URN value is cited with one level of citation beyond the original passage so that each token node is uniquely identified.
 
@@ -66,7 +66,7 @@ tokenizednodes[1]
 
 
 
-## CitableTextCorpus
+## `CitableTextCorpus`
 
 If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitableNode`.
 
