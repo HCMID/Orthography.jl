@@ -18,8 +18,9 @@ makedocs(
     pages = [
         "Overview" => "index.md",
         "Guide" => [
-            "guide/guide.md",
-            "guide/applications.md"
+            "guide/validation.md",
+            "guide/tokenization.md",
+            "guide/corpora.md"
         ],
         "API documentation" => [
             "man/index.md",

@@ -1,14 +1,19 @@
-# User's guide: applications
+# Working with citable corpora
 
 ```@meta
 CurrentModule = Orthography
 ```
 
-Tokenizers can be applied to strings of text, to citable passges of text, or to citable corpora.
+
+## Token lists
+
+
+You can use a tokenizer to compile a list of token values.
 
 
 ## Token histograms
 
+You can also count frequencies 
 Tokenizers can be used to create histograms of token values. We count tokens in the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
 
 ```jldoctest histo
@@ -56,3 +61,7 @@ julia> histo_lex[","]
 ERROR: KeyError: key "," not found
 [...]
 ```
+
+## Tokenized editions
+
+## Token index
