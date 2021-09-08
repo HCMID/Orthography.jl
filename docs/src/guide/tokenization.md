@@ -2,9 +2,6 @@
 
 # Tokenization
 
-```@meta
-CurrentModule = Orthography
-```
 
 You can use a tokenizer to tokenize strings, citable passages of texts, or entire text corpora.
 
@@ -29,23 +26,20 @@ Each `OrthographicToken` has a string value and a classifying category.
 
 
 ```jldoctest simpleseries
-tokens
+tokens[1]
 
-# output 
+# output
 
-10-element Vector{OrthographicToken}:
- OrthographicToken("The", LexicalToken())
- OrthographicToken("3", NumericToken())
- OrthographicToken("stooges", LexicalToken())
- OrthographicToken(",", PunctuationToken())
- OrthographicToken("Larry", LexicalToken())
- OrthographicToken(",", PunctuationToken())
- OrthographicToken("Curly", LexicalToken())
- OrthographicToken("and", LexicalToken())
- OrthographicToken("Moe", LexicalToken())
- OrthographicToken(".", PunctuationToken())
+OrthographicToken("The", LexicalToken())
 ```
 
+```jldoctest simpleseries
+tokens[2]
+
+# output
+
+OrthographicToken("3", NumericToken())
+```
 
 ## `CitableNode`s
 

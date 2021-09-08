@@ -25,3 +25,12 @@ Pages = [
 ]
 ```
 
+```jldoctest simpleseries
+using Orthography
+orthography = simpleAscii()
+typeof(orthography)
+
+# output
+
+SimpleAscii
+```

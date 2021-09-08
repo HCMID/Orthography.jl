@@ -1,15 +1,11 @@
 # Working with citable corpora
 
-```@meta
-CurrentModule = Orthography
-```
-
 
 ## Token lists
 
 You can use a tokenizer to compile a list of token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
 
-```jldoctst histo
+```jldoctest histo
 using Orthography
 using CitableText, CitableCorpus
 corpus = CitableTextCorpus([
@@ -29,10 +25,11 @@ lexvalues[1:4]
  "is"
 ```
 
+
 By default, the `tokenvalues` function only collects lexical tokens, but you can filter by any token type, or by `nothing` to get a list of all token values.
 
 
-```jldoctst histo
+```jldoctest histo
  allvalues = tokenvalues(simpleAscii(), corpus, nothing)
  allvalues[1:4]
 
@@ -44,6 +41,8 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
  "horse"
  "of"
 ```
+
+
 
 ## Token histograms
 
