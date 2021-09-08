@@ -13,4 +13,3 @@ Documentation is available [here](https://HCMID.github.io/Orthography.jl/stable/
 
 Orthography.jl was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club (MID).
 
-
