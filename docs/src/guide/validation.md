@@ -85,3 +85,9 @@ validstring(orthography, cam)
 
 false
 ```
+
+
+
+### Tokenization
+
+See the following section for an overview of how to use an orthographic system for tokenization.

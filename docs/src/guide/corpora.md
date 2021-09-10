@@ -3,7 +3,7 @@
 
 ## Token lists
 
-You can use a tokenizer to compile a list of token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
+You can use a tokenizer to compile a list of unique token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
 
 ```jldoctest histo
 using Orthography
@@ -89,7 +89,7 @@ ERROR: KeyError: key "," not found
 
 ## Tokenized editions
 
-You can use a tokenizer to create a new corpus, citable at the level of the token.
+You can use an orthography's tokenizer to create a new corpus, citable at the level of the token.
 
 
 ```jldoctest histo
@@ -113,3 +113,26 @@ CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1.2"), "horse")
 
 
 ## Token index
+
+You can index a tokenized edition.  The result is a dictionary.
+
+```jldoctest histo
+idx = corpusindex(simpleAscii(), corpus)
+typeof(idx)
+
+# output
+
+Dictionaries.Dictionary{SubString{String}, Vector{CtsUrn}}
+```
+
+```jldoctest histo
+idx["horse"]
+
+# output
+
+4-element Vector{CtsUrn}:
+ CtsUrn("urn:cts:docstrings:mred.themesong:1.2")
+ CtsUrn("urn:cts:docstrings:mred.themesong:1.5")
+ CtsUrn("urn:cts:docstrings:mred.themesong:2.8")
+ CtsUrn("urn:cts:docstrings:mred.themesong:3.7")
+``` 
