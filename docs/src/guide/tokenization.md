@@ -2,12 +2,13 @@
 
 # Tokenization
 
+Tokenization parses a string value into a sequence of classified substrings.  For substrings that are valid in the orthographic system, the classification will be one of the token types enumerated for that orthographic system.
 
 You can use a tokenizer to tokenize strings, citable passages of texts, or entire text corpora.
 
 ## Strings
 
-You can tokenize a literal string.  The result is a list of `OrthographicToken`s.
+When you tokenize a literal string, the result is a list of `OrthographicToken`s.
 
 ```jldoctest simpleseries
 using Orthography
@@ -59,10 +60,18 @@ tokenizednodes[1]
 ```
 
 
+```jldoctest simpleseries
+tokenizednodes[2]
+
+# output
+
+(CitableNode(CtsUrn("urn:cts:orthodocs:tokenization.v1:stooges.1a"), "3"), NumericToken())
+```
+
 
 ## `CitableTextCorpus`
 
-If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitableNode`.
+If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitableNode`.  If your text corpus has only a single node, the results will therefore be equal to parsing that node separately, as this example shows.
 
 ```jldoctest simpleseries
 corpus = CitableTextCorpus([cn])
