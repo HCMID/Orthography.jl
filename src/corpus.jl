@@ -21,11 +21,11 @@ function corpus_histo(ortho::T, c::CitableTextCorpus, tokenType = nothing) where
     corpustokens = tokenize(ortho, c)
     if isnothing(tokenType)
         txt = map(tkn -> tkn[1].text, corpustokens)
-        sort(countmap(txt), byvalue=true, rev=true)
+        sort!(OrderedDict(countmap(txt)); byvalue=true, rev=true)
     else
         filtered = filter(tkn -> tkn[2] == tokenType, corpustokens)
         txt = map(tkn -> tkn[1].text, filtered)
-        sort(countmap(txt), byvalue=true, rev=true)
+        sort!(OrderedDict(countmap(txt)); byvalue=true, rev=true)
     end
 end
 
