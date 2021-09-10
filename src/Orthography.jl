@@ -6,6 +6,7 @@ using Documenter, DocStringExtensions
 using CitableText, CitableCorpus
 using StatsBase
 using TypedTables
+using OrderedCollections
 
 export OrthographicSystem
 export validchar, validstring,  tokenize, codepoints, tokentypes
