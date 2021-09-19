@@ -42,21 +42,21 @@ tokens[2]
 OrthographicToken("3", NumericToken())
 ```
 
-## `CitableNode`s
+## `CitablePassage`s
 
-When you tokenize a `CitableNode`, the result is a list of `CitableNode`s paired with token categories.  The text value of each node is the token, and the URN value is cited with one level of citation beyond the original passage so that each token node is uniquely identified.
+When you tokenize a `CitablePassage`, the result is a list of `CitablePassage`s paired with token categories.  The text value of each node is the token, and the URN value is cited with one level of citation beyond the original passage so that each token node is uniquely identified.
 
 
 ```jldoctest simpleseries
 using CitableText, CitableCorpus
 urn = CtsUrn("urn:cts:orthodocs:tokenization.v1:stooges")
-cn = CitableNode(urn, s)
+cn = CitablePassage(urn, s)
 tokenizednodes = tokenize(orthography, cn)
 tokenizednodes[1]
 
 # output
 
-(CitableNode(CtsUrn("urn:cts:orthodocs:tokenization.v1:stooges.1"), "The"), LexicalToken())
+(CitablePassage(urn:cts:orthodocs:tokenization.v1:stooges.1, "The"), LexicalToken())
 ```
 
 
@@ -65,13 +65,13 @@ tokenizednodes[2]
 
 # output
 
-(CitableNode(CtsUrn("urn:cts:orthodocs:tokenization.v1:stooges.1a"), "3"), NumericToken())
+(CitablePassage(urn:cts:orthodocs:tokenization.v1:stooges.1a, "3"), NumericToken())
 ```
 
 
 ## `CitableTextCorpus`
 
-If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitableNode`.  If your text corpus has only a single node, the results will therefore be equal to parsing that node separately, as this example shows.
+If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitablePassage`.  If your text corpus has only a single node, the results will therefore be equal to parsing that node separately, as this example shows.
 
 ```jldoctest simpleseries
 corpus = CitableTextCorpus([cn])
