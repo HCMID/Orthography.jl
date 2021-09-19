@@ -12,12 +12,12 @@
 end
 
 
-@testset "Test tokenizing a CitableNode" begin
+@testset "Test tokenizing a CitablePassage" begin
     ascii = simpleAscii()
 
     urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
     txt = "Now is the time." 
-    cn = CitableNode(urn,txt)
+    cn = CitablePassage(urn,txt)
 
     tkns = tokenize(ascii, cn) 
     @test length(tkns) == 5
@@ -32,8 +32,8 @@ end
 
     urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
     txt = "Now is the time." 
-    cn1 = CitableNode(urn,txt)
-    cn2 = CitableNode(CtsUrn("urn:cts:dummy:unittests.v1:2"), "And then the time is past.")
+    cn1 = CitablePassage(urn,txt)
+    cn2 = CitablePassage(CtsUrn("urn:cts:dummy:unittests.v1:2"), "And then the time is past.")
     c = CitableTextCorpus([cn1, cn2])
 
     tkns = tokenize(ascii, c)

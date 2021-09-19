@@ -9,9 +9,9 @@ You can use a tokenizer to compile a list of unique token values in a corpus. Th
 using Orthography
 using CitableText, CitableCorpus
 corpus = CitableTextCorpus([
-        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"A horse is a horse, of course, of course,"),
-        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:2"),"And no one can talk to a horse of course,"),
-        CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"A horse is a horse, of course, of course,"),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:2"),"And no one can talk to a horse of course,"),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
 lexvalues = tokenvalues(simpleAscii(), corpus)
 lexvalues[1:4]
@@ -104,11 +104,11 @@ CitableTextCorpus
 
 ```jldoctest histo
 tokenized = tokenizedcorpus(simpleAscii(), corpus)
-tokenized.corpus[2]
+tokenized.passages[2]
 
 # output
 
-CitableNode(CtsUrn("urn:cts:docstrings:mred.themesong:1.2"), "horse")
+CitablePassage(urn:cts:docstrings:mred.themesong:1.2, "horse")
 ```
 
 
@@ -131,8 +131,8 @@ idx["horse"]
 # output
 
 4-element Vector{CtsUrn}:
- CtsUrn("urn:cts:docstrings:mred.themesong:1.2")
- CtsUrn("urn:cts:docstrings:mred.themesong:1.5")
- CtsUrn("urn:cts:docstrings:mred.themesong:2.8")
- CtsUrn("urn:cts:docstrings:mred.themesong:3.7")
+ urn:cts:docstrings:mred.themesong:1.2
+ urn:cts:docstrings:mred.themesong:1.5
+ urn:cts:docstrings:mred.themesong:2.8
+ urn:cts:docstrings:mred.themesong:3.7
 ``` 
