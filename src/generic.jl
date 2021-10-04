@@ -105,3 +105,20 @@ function tokenize(ortho::T, c::CitableTextCorpus) where {T <: OrthographicSystem
 end
 
 
+
+
+
+"""
+Tokenize document `doc` using the tokenizer of the given orthographic system.
+
+$(SIGNATURES)
+
+The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
+"""
+function tokenize(ortho::T, doc::CitableDocument) where {T <: OrthographicSystem}
+    tkns = []
+    for psg in doc.passages
+        push!(tkns, tokenize(ortho, psg))
+    end
+    tkns  |> Iterators.flatten |> collect
+end

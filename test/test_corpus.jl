@@ -31,4 +31,8 @@
 
     tkncorpus = tokenizedcorpus(simpleAscii(), c)
     @test typeof(tkncorpus) == CitableTextCorpus
+
+
+    docs = documents(c)
+    @test tokenize(simpleAscii(), docs[1]) == tokenize(simpleAscii(), c)
 end
