@@ -13,7 +13,7 @@ end
     ortho = simpleAscii()
     @test isa(ortho, SimpleAscii)
     @test tokentypes(ortho) == [LexicalToken(), NumericToken(), PunctuationToken()]
-    expectedcps = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[]"
+    expectedcps = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[] \t\n"
     @test codepoints(ortho) == expectedcps
 end
 

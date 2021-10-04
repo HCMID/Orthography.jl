@@ -108,7 +108,7 @@ tokenized.passages[2]
 
 # output
 
-CitablePassage(urn:cts:docstrings:mred.themesong:1.2, "horse")
+<urn:cts:docstrings:mred.themesong:1.2> horse
 ```
 
 

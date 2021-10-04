@@ -7,10 +7,10 @@ CurrentModule = Orthography
 
 Subtypes of an `OrthographicSystem` must implement five functions:
 
-- `codepoints`: returns a complete list of codepoints allowed in this orthography
-- `tokentypes`: returns a complete list of the types of tokens that can be recognized in this orthography.  These are subtypes of `TokenCategory`.
-- `validchar(c)`: true if `c` is a valid character in this orthography.  `c` is a string value representing a single character in this orthography. It may be longer than one Julia `Char`.
-- `validstring(s)`: true if `s` is a valid string in this orthography
+- `codepoints()`: returns a complete list of codepoints allowed in this orthography
+- `tokentypes()`: returns a complete list of the types of tokens that can be recognized in this orthography.  These are subtypes of `TokenCategory`.
+- `validchar(orthography, c)`: true if `c` is a valid character in this orthography.  `c` is a string value representing a single character in this orthography. It may be longer than one Julia `Char`.
+- `validstring(orthography, s)`: true if `s` is a valid string in this orthography
 - `tokenize(orthography,s)`: use `orthography` to tokenize `s`.  This function is the basis for the higher-order functions presented in the following pages.
 
 
@@ -51,7 +51,7 @@ codepoints(orthography)
 
 # output
 
-"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[]"
+"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[] \t\n"
 ```
 
 

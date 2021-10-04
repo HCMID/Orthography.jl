@@ -56,7 +56,7 @@ tokenizednodes[1]
 
 # output
 
-(CitablePassage(urn:cts:orthodocs:tokenization.v1:stooges.1, "The"), LexicalToken())
+(<urn:cts:orthodocs:tokenization.v1:stooges.1> The, LexicalToken())
 ```
 
 
@@ -65,7 +65,7 @@ tokenizednodes[2]
 
 # output
 
-(CitablePassage(urn:cts:orthodocs:tokenization.v1:stooges.1a, "3"), NumericToken())
+(<urn:cts:orthodocs:tokenization.v1:stooges.1a> 3, NumericToken())
 ```
 
 
