@@ -48,6 +48,14 @@ function asciinumeric()
     "0123456789.,-"
 end
 
+"""Compose list of recognized whitespace characters in `SimpleAscii`.
+
+$(SIGNATURES)
+"""
+function asciiwhitespace()
+    " \t\n"
+end
+
 """Define a string including all valid code points
 in the `SimpleAscii` orthography.
 
@@ -57,7 +65,9 @@ function asciiCPs()
     chars = string(
         asciialphabetic(),
         asciinumeric(),
-        asciipunctuation()
+        asciipunctuation(),
+        asciinumeric(),
+        asciiwhitespace()
     ) |> unique
     join(chars,"")
 end
@@ -87,12 +97,10 @@ end
 $(SIGNATURES)
 """
 function asciiTokenizer(s::AbstractString)
-    lexical = LexicalToken()
-    punctuation = PunctuationToken()
     wsdelimited = split(s)
     depunctuated = map(s -> splitAsciiPunctuation(s), wsdelimited)
     tknstrings = collect(Iterators.flatten(depunctuated))
-    tkns = map(t -> asciitokenforstring(t), tknstrings)
+    map(t -> asciitokenforstring(t), tknstrings)  
 end
 
 """Construct an `OrthographicToken` from a string.
