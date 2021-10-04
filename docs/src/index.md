@@ -16,14 +16,7 @@ The tokenizing functionality can be applied to strings of text, citable text pas
 Orthography.jl was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club (MID).
 
 
-## Contents
 
-```@contents
-Pages = [
-    "guide/guide.md",
-    "man/index.md"
-]
-```
 
 ```jldoctest simpleseries
 using Orthography
@@ -33,4 +26,15 @@ typeof(orthography)
 # output
 
 SimpleAscii
+```
+
+## Contents
+
+```@contents
+Pages = [
+    "guide/validation.md",
+    "guide/tokenization.md",
+    "guide/corpora.md",
+    "man/index.md"
+]
 ```
