@@ -8,15 +8,15 @@ using StatsBase
 using TypedTables
 using OrderedCollections
 
-export OrthographicSystem
-export validchar, validstring,  tokenize, codepoints, tokentypes
+export OrthographicSystem, OrthographyTrait
+export IsOrthographicSystem, NotOrthographicSystem
+export validcp, validstring,  tokenize, codepoints, tokentypes
 export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc
 
 export TokenCategory, OrthographicToken
 export LexicalToken, NumericToken, PunctuationToken
 
-export GenericOrthography
 export SimpleAscii
 export simpleAscii 
 

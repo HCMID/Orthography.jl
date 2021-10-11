@@ -19,9 +19,9 @@ end
 
 @testset "Test validing character usage" begin
     ortho = simpleAscii()
-    @test validchar(ortho, "a")
-    @test validstring(ortho, "baa")
-    @test ! validstring(ortho, "μῆνιν")
+    @test validcp("a", ortho)
+    @test validstring("baa", ortho)
+    @test ! validstring("μῆνιν", ortho)
 end
 
 @testset "Test splitting off trailing punctuation" begin
@@ -54,7 +54,7 @@ end
 @testset "Test tokenization" begin
     sentence = "Now is the time for all long sentences to end."
     ortho = simpleAscii()
-    tokens = ortho.tokenizer(sentence)
+    tokens = tokenize(sentence, ortho)
     expectedcount = 11
     @test length(tokens) == expectedcount
     @test tokens[1].text == "Now"

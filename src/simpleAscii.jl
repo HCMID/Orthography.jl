@@ -2,8 +2,9 @@
 struct SimpleAscii <: OrthographicSystem
     codepoints
     tokencategories
-    tokenizer
 end
+
+OrthographyTrait(::Type{SimpleAscii}) = IsOrthographicSystem()
 
 """Construct a `SimpleAscii` with correct member values.
 
@@ -12,8 +13,7 @@ $(SIGNATURES)
 function simpleAscii()
     SimpleAscii(
         asciiCPs(),
-        basicTypes(),
-        asciiTokenizer
+        basicTypes()
     )
 end
 
@@ -92,17 +92,6 @@ function splitAsciiPunctuation(s::AbstractString)
 end
 
 
-"""Tokenize a string in `SimpleAscii` orthography.
-
-$(SIGNATURES)
-"""
-function asciiTokenizer(s::AbstractString)
-    wsdelimited = split(s)
-    depunctuated = map(s -> splitAsciiPunctuation(s), wsdelimited)
-    tknstrings = collect(Iterators.flatten(depunctuated))
-    map(t -> asciitokenforstring(t), tknstrings)  
-end
-
 """Construct an `OrthographicToken` from a string.
 
 $(SIGNATURES)
@@ -127,7 +116,7 @@ end
 $(SIGNATURES)
 """
 function isAsciiAlphabetic(s::AbstractString)
-    chlist = split(s,"")
+    #chlist = split(s,"")
     alphas =  asciialphabetic()
     tfs = []
     for i in collect(eachindex(s)) 
@@ -143,7 +132,7 @@ end
 $(SIGNATURES)
 """
 function isAsciiPunctuation(s::AbstractString)::Bool
-    chlist = split(s,"")
+    #chlist = split(s,"")
     puncts =  asciipunctuation()
     tfs = []
     for i in collect(eachindex(s)) 
@@ -155,7 +144,6 @@ function isAsciiPunctuation(s::AbstractString)::Bool
 end
 
 
-
 """True if all characters in `s` are numeric characters and at least one is a digits.
 
 $(SIGNATURES)
@@ -164,7 +152,7 @@ Obviously not a real-world definition of syntax for a numeric token.
 """
 function isAsciiNumeric(s::AbstractString)::Bool
     # 1. All characters are valid characters for a numeric token
-    chlist = split(s,"")
+    #chlist = split(s,"")
     puncts =  asciinumeric()
     tfs = []
     for i in collect(eachindex(s)) 
@@ -197,4 +185,16 @@ $(SIGNATURES)
 """
 function codepoints(ortho::SimpleAscii)
     ortho.codepoints
+end
+
+
+"""Implement tokenize function for `SimpleAscii` orthography.
+
+$(SIGNATURES)
+"""
+function tokenize(s::AbstractString, o::SimpleAscii) 
+    wsdelimited = split(s)
+    depunctuated = map(s -> splitAsciiPunctuation(s), wsdelimited)
+    tknstrings = collect(Iterators.flatten(depunctuated))
+    map(t -> asciitokenforstring(t), tknstrings)  
 end

@@ -13,7 +13,7 @@ corpus = CitableTextCorpus([
         CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:2"),"And no one can talk to a horse of course,"),
         CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
-lexvalues = tokenvalues(simpleAscii(), corpus)
+lexvalues = tokenvalues(corpus, simpleAscii())
 lexvalues[1:4]
 
 # output
@@ -30,7 +30,7 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
 
 
 ```jldoctest histo
- allvalues = tokenvalues(simpleAscii(), corpus, nothing)
+ allvalues = tokenvalues(corpus, simpleAscii(), nothing)
  allvalues[1:4]
 
 # output
@@ -50,7 +50,7 @@ You can also count frequencies of tokens.  By default, the `corpus_histo` functi
 
 ```jldoctest histo
 
-histo_all = corpus_histo(simpleAscii(), corpus)
+histo_all = corpus_histo(corpus, simpleAscii())
 histo_all["course"]
 
 # output
@@ -71,7 +71,7 @@ histo_all[","]
 Optionally, you can include a token type to limit results.  If we consider only lexical tokens, we should get the same result for "course".
 
 ```jldoctest histo
-histo_lex = corpus_histo(simpleAscii(), corpus, LexicalToken())
+histo_lex = corpus_histo(corpus, simpleAscii(), LexicalToken())
 histo_lex["course"]
 
 # output
@@ -94,7 +94,7 @@ You can use an orthography's tokenizer to create a new corpus, citable at the le
 
 ```jldoctest histo
 
-tkncorpus = tokenizedcorpus(simpleAscii(), corpus)
+tkncorpus = tokenizedcorpus(corpus, simpleAscii())
 typeof(tkncorpus)
 
 # output
@@ -103,7 +103,7 @@ CitableTextCorpus
 ```
 
 ```jldoctest histo
-tokenized = tokenizedcorpus(simpleAscii(), corpus)
+tokenized = tokenizedcorpus(corpus, simpleAscii())
 tokenized.passages[2]
 
 # output
@@ -117,7 +117,7 @@ tokenized.passages[2]
 You can index a tokenized edition.  The result is a dictionary.
 
 ```jldoctest histo
-idx = corpusindex(simpleAscii(), corpus)
+idx = corpusindex(corpus, simpleAscii())
 typeof(idx)
 
 # output

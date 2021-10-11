@@ -19,7 +19,7 @@ Public functions implemented for all subtypes of `OrthographicSystem`.
 ```@docs
 codepoints
 tokentypes
-validchar
+validcp
 validstring
 tokenize
 ```

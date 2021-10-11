@@ -20,19 +20,19 @@
         CitablePassage(CtsUrn("urn:cts:dummy:ac.who:17"), "Costello: That's who?"),
         CitablePassage(CtsUrn("urn:cts:dummy:ac.who:18"), "Abbott: Yes.)")
     ])
-    histo = corpus_histo(simpleAscii(), c)
+    histo = corpus_histo(c, simpleAscii())
     @test histo["Who"] == 4
     @test histo["Costello"] == 9
 
-    lexvalues = tokenvalues(simpleAscii(), c)
+    lexvalues = tokenvalues(c, simpleAscii())
     @test length(lexvalues) == 26
     @test lexvalues[1] == "Costello"
     @test lexvalues[2] == "Abbott"
 
-    tkncorpus = tokenizedcorpus(simpleAscii(), c)
+    tkncorpus = tokenizedcorpus(c, simpleAscii())
     @test typeof(tkncorpus) == CitableTextCorpus
 
 
     docs = documents(c)
-    @test tokenize(simpleAscii(), docs[1]) == tokenize(simpleAscii(), c)
+    @test tokenize(docs[1], simpleAscii()) == tokenize(c, simpleAscii())
 end

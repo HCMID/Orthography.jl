@@ -1,57 +1,26 @@
-# Generic functions.
-
-"""Generic function to retrieve list of codepoints for an `OrthographicSystem`.
-
-$(SIGNATURES)
-"""
-function codepoints(ortho::T) where {T <: OrthographicSystem}
-    @warn "Function codepoints not defined for orthography $(typeof(ortho))"
-    nothing
-end
-
-"""Generic function to retrieve a list of tokentypes for an `OrthographicSystem`.
-
-$(SIGNATURES)
-"""
-function tokentypes(ortho::T) where {T <: OrthographicSystem}
-    @warn "Function tokentypes not defined for orthography $(typeof(ortho))"
-    nothing
-end
+# Functions that can be built from the three functions of the OrthographyTrait interface.
 
 """True if all chars in `s` are valid.
 
 $(SIGNATURES)
 """
-function validstring(ortho::T, s)::Bool where  {T <: OrthographicSystem}
+function validstring(s, ortho::T)::Bool where  {T <: OrthographicSystem}
     chars = split(s, "")
-    tf = map(c -> validchar(ortho,c), chars)
+    tf = map(c -> validcp(c, ortho), chars)
     !(false in tf)
 end
 
-"""True if `ch` appears in list of all valid characters for this orthography.
+"""True if `ch` appears in list of all valid characters (codepoints) for this orthography.
 
 $(SIGNATURES)
 
 `ch` is a string possibly including more than one Julia `Char` but representing 
 a single character in the orthographic system `ortho`.
 """
-function validchar(ortho::T, ch::AbstractString)::Bool where {T <: OrthographicSystem}
+function validcp(ch::AbstractString, ortho::T)::Bool where {T <: OrthographicSystem}
     cplist = split(codepoints(ortho),"")
     ch in cplist
 end
-
-
-"""
-Tokenize string `s` using the tokenizer of the given orthographic system.
-
-$(SIGNATURES)
-
-The return value is a list of `OrthographicTokens`.
-"""
-function tokenize(ortho::T, s::AbstractString) where {T <: OrthographicSystem}
-    ortho.tokenizer(s)
-end
-
 
 
 """
@@ -61,9 +30,9 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(ortho::T, cn::CitablePassage) where {T <: OrthographicSystem}
+function tokenize(cn::CitablePassage, ortho::T) where {T <: OrthographicSystem}
 
-    tkns = ortho.tokenizer(cn.text)
+    tkns = tokenize(cn.text, ortho)
 
     citabletokens = []
     n1 = 0 # Int value before 1
@@ -85,10 +54,6 @@ function tokenize(ortho::T, cn::CitablePassage) where {T <: OrthographicSystem}
     citabletokens
 end
 
-
-
-
-
 """
 Tokenize corpus `c` using the tokenizer of the given orthographic system.
 
@@ -96,10 +61,10 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(ortho::T, c::CitableTextCorpus) where {T <: OrthographicSystem}
+function tokenize(c::CitableTextCorpus, ortho::T) where {T <: OrthographicSystem}
     tkns = []
     for cn in c.passages
-        push!(tkns, tokenize(ortho, cn))
+        push!(tkns, tokenize(cn, ortho))
     end
     tkns  |> Iterators.flatten |> collect
 end
@@ -115,10 +80,10 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(ortho::T, doc::CitableDocument) where {T <: OrthographicSystem}
+function tokenize(doc::CitableDocument, ortho::T) where {T <: OrthographicSystem}
     tkns = []
     for psg in doc.passages
-        push!(tkns, tokenize(ortho, psg))
+        push!(tkns, tokenize(psg, ortho))
     end
     tkns  |> Iterators.flatten |> collect
 end

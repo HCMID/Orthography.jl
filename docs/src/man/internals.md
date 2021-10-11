@@ -10,12 +10,15 @@ Orthography.trimtail
 ## Functions supporting the `SimpleAscii` implementation
 
 ```@docs
-Orthography.basicTypes
-Orthography.asciiTokenizer
-Orthography.splitAsciiPunctuation
 Orthography.asciialphabetic
 Orthography.asciinumeric
 Orthography.asciipunctuation
+Orthography.asciiwhitespace
 Orthography.asciiCPs
+Orthography.basicTypes
+Orthography.splitAsciiPunctuation
 Orthography.asciitokenforstring
+Orthography.isAsciiAlphabetic
+Orthography.isAsciiPunctuation
+Orthography.isAsciiNumeric
 ```
