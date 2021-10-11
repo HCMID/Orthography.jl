@@ -1,6 +1,5 @@
 ![build](https://github.com/HCMID/Orthography.jl/actions/workflows/Documentation.yml/badge.svg)
 
-
 # Orthography.jl
 
 Work with rigorously defined scholarly editions of digital texts adhering to a specified orthography.  An orthography explicitly defines:
