@@ -10,7 +10,7 @@ using OrderedCollections
 
 export OrthographicSystem, OrthographyTrait
 export IsOrthographicSystem, NotOrthographicSystem
-export validchar, validstring,  tokenize, codepoints, tokentypes
+export validcp, validstring,  tokenize, codepoints, tokentypes
 export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc
 
