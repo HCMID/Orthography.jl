@@ -14,7 +14,7 @@ When you tokenize a literal string, the result is a list of `OrthographicToken`s
 using Orthography
 orthography = simpleAscii()
 s = "The 3 stooges, Larry, Curly and Moe."
-tokens = tokenize(orthography, s)
+tokens = tokenize(s, orthography)
 tokens[1] |> typeof 
 
 # output
@@ -51,7 +51,7 @@ When you tokenize a `CitablePassage`, the result is a list of `CitablePassage`s 
 using CitableText, CitableCorpus
 urn = CtsUrn("urn:cts:orthodocs:tokenization.v1:stooges")
 cn = CitablePassage(urn, s)
-tokenizednodes = tokenize(orthography, cn)
+tokenizednodes = tokenize(cn, orthography)
 tokenizednodes[1]
 
 # output
@@ -75,7 +75,7 @@ If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citab
 
 ```jldoctest simpleseries
 corpus = CitableTextCorpus([cn])
-tokenizedcorpus = tokenize(orthography, corpus)
+tokenizedcorpus = tokenize(corpus, orthography)
 tokenizedcorpus == tokenizednodes
 
 # output
