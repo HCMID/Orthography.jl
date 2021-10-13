@@ -6,7 +6,7 @@ $(SIGNATURES)
 Values are sorted by frequency in the corpus.
 """
 function tokenvalues(c::CitableTextCorpus, orthography::T;  filterby = LexicalToken()) where {T <: OrthographicSystem}
-    corpus_histo(c, orthography, filterby) |> keys |> collect
+    corpus_histo(c, orthography; filterby = filterby) |> keys |> collect
 end
 
 """
