@@ -30,7 +30,7 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
 
 
 ```jldoctest histo
- allvalues = tokenvalues(corpus, simpleAscii(), nothing)
+ allvalues = tokenvalues(corpus, simpleAscii(); filterby = nothing)
  allvalues[1:4]
 
 # output
@@ -46,11 +46,11 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
 
 ## Token histograms
 
-You can also count frequencies of tokens.  By default, the `corpus_histo` function counts all token types.
 
+You can also count frequencies of tokens.  Like all the other corpus functions, the `corpus_histo` function counts only lexical tokens by default.  To count all token types, we can pass `nothing` as the value of an optional `filterby` parameter.
 ```jldoctest histo
 
-histo_all = corpus_histo(corpus, simpleAscii())
+histo_all = corpus_histo(corpus, simpleAscii(); filterby = nothing)
 histo_all["course"]
 
 # output
@@ -71,7 +71,7 @@ histo_all[","]
 Optionally, you can include a token type to limit results.  If we consider only lexical tokens, we should get the same result for "course".
 
 ```jldoctest histo
-histo_lex = corpus_histo(corpus, simpleAscii(), LexicalToken())
+histo_lex = corpus_histo(corpus, simpleAscii(); filterby = LexicalToken())
 histo_lex["course"]
 
 # output
