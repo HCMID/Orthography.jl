@@ -71,8 +71,6 @@ end
 
 
 
-
-
 """
 Tokenize document `doc` using the tokenizer of the given orthographic system.
 

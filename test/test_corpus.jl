@@ -32,7 +32,4 @@
     tkncorpus = tokenizedcorpus(c, simpleAscii())
     @test typeof(tkncorpus) == CitableTextCorpus
 
-
-    docs = documents(c)
-    @test tokenize(docs[1], simpleAscii()) == tokenize(c, simpleAscii())
 end
