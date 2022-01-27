@@ -11,8 +11,20 @@ struct OrthographicToken
     tokencategory::TokenCategory
 end
 
+"""Find text value of an `OrthographicToken`.
+$(SIGNATURES)
+"""
+function tokentext(ot::OrthographicToken)
+    ot.text
+end
 
 
+"""Find analytical category of an `OrthographicToken`.
+$(SIGNATURES)
+"""
+function tokencategory(ot::OrthographicToken)
+    ot.tokencategory
+end
 
 
 """The orthography trait."""

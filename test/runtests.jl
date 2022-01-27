@@ -1,5 +1,5 @@
 using Orthography
-using CitableText, CitableCorpus
+using CitableText, CitableCorpus, CitableBase
 using Unicode
 using Test
 

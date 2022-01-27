@@ -4,10 +4,10 @@
     tkns = tokenize(s, ascii)
     @test length(tkns) == 5
     
-    @test tkns[1].text == "Now"
-    @test tkns[5].text == "."  
-    @test tkns[1].tokencategory == LexicalToken()
-    @test tkns[5].tokencategory == PunctuationToken()   
+    @test tokentext(tkns[1]) == "Now"
+    @test tokentext(tkns[5]) == "."  
+    @test tokencategory(tkns[1]) == LexicalToken()
+    @test tokencategory(tkns[5]) == PunctuationToken()   
 
 end
 
@@ -15,14 +15,14 @@ end
 @testset "Test tokenizing a CitablePassage" begin
     ascii = simpleAscii()
 
-    urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
+    psgurn = CtsUrn("urn:cts:dummy:unittests.v1:1")
     txt = "Now is the time." 
-    cn = CitablePassage(urn,txt)
+    cn = CitablePassage(psgurn,txt)
 
     tkns = tokenize(cn, ascii) 
     @test length(tkns) == 5
-    @test tkns[1][1].text == "Now"
-    @test tkns[1][1].urn == CtsUrn("urn:cts:dummy:unittests.v1:1.1")
+    @test text(tkns[1][1]) == "Now"
+    @test urn(tkns[1][1]) == CtsUrn("urn:cts:dummy:unittests.v1:1.1")
     @test tkns[1][2] == LexicalToken()
 end
 
