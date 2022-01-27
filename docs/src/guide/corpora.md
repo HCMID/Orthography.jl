@@ -9,9 +9,9 @@ You can use a tokenizer to compile a list of unique token values in a corpus. Th
 using Orthography
 using CitableText, CitableCorpus
 corpus = CitableTextCorpus([
-        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:1"),"A horse is a horse, of course, of course,"),
-        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:2"),"And no one can talk to a horse of course,"),
-        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong.v1:1"),"A horse is a horse, of course, of course,"),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong.v1:2"),"And no one can talk to a horse of course,"),
+        CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong.v1:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
 lexvalues = tokenvalues(corpus, simpleAscii())
 lexvalues[1:4]
@@ -108,7 +108,7 @@ tokenized.passages[2]
 
 # output
 
-<urn:cts:docstrings:mred.themesong:1.2> horse
+<urn:cts:docstrings:mred.themesong.v1_tokens:1.2> horse
 ```
 
 
@@ -131,8 +131,8 @@ idx["horse"]
 # output
 
 4-element Vector{CtsUrn}:
- urn:cts:docstrings:mred.themesong:1.2
- urn:cts:docstrings:mred.themesong:1.5
- urn:cts:docstrings:mred.themesong:2.8
- urn:cts:docstrings:mred.themesong:3.7
+ urn:cts:docstrings:mred.themesong.v1_tokens:1.2
+ urn:cts:docstrings:mred.themesong.v1_tokens:1.5
+ urn:cts:docstrings:mred.themesong.v1_tokens:2.8
+ urn:cts:docstrings:mred.themesong.v1_tokens:3.7
 ``` 

@@ -3,6 +3,7 @@ module Orthography
 using Unicode
 using Documenter, DocStringExtensions
 
+using CitableBase
 using CitableText, CitableCorpus
 using StatsBase
 using TypedTables
@@ -15,6 +16,7 @@ export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc
 
 export TokenCategory, OrthographicToken
+export tokentext, tokencategory
 export LexicalToken, NumericToken, PunctuationToken
 
 export SimpleAscii

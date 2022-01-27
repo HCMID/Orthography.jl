@@ -4,10 +4,10 @@
     tkns = tokenize(s, ascii)
     @test length(tkns) == 5
     
-    @test tkns[1].text == "Now"
-    @test tkns[5].text == "."  
-    @test tkns[1].tokencategory == LexicalToken()
-    @test tkns[5].tokencategory == PunctuationToken()   
+    @test tokentext(tkns[1]) == "Now"
+    @test tokentext(tkns[5]) == "."  
+    @test tokencategory(tkns[1]) == LexicalToken()
+    @test tokencategory(tkns[5]) == PunctuationToken()   
 
 end
 
@@ -15,25 +15,31 @@ end
 @testset "Test tokenizing a CitablePassage" begin
     ascii = simpleAscii()
 
-    urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
+    psgurn = CtsUrn("urn:cts:dummy:unittests.test1.v1:1")
     txt = "Now is the time." 
-    cn = CitablePassage(urn,txt)
+    cn = CitablePassage(psgurn,txt)
 
     tkns = tokenize(cn, ascii) 
     @test length(tkns) == 5
-    @test tkns[1][1].text == "Now"
-    @test tkns[1][1].urn == CtsUrn("urn:cts:dummy:unittests.v1:1.1")
+    @test text(tkns[1][1]) == "Now"
+    @test urn(tkns[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.v1_tokens:1.1")
     @test tkns[1][2] == LexicalToken()
+
+    edlabelled = tokenize(cn, ascii, edition="tokenized") 
+    @test urn(edlabelled[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.tokenized:1.1")
+
+    exlabelled = tokenize(cn, ascii, exemplar="tokens") 
+    @test urn(exlabelled[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.v1.tokens:1.1")
 end
 
 
 @testset "Test tokenizing a CitableTextCorpus" begin
     ascii = simpleAscii()
 
-    urn = CtsUrn("urn:cts:dummy:unittests.v1:1")
+    urn = CtsUrn("urn:cts:dummy:unittests.test2.v1:1")
     txt = "Now is the time." 
     cn1 = CitablePassage(urn,txt)
-    cn2 = CitablePassage(CtsUrn("urn:cts:dummy:unittests.v1:2"), "And then the time is past.")
+    cn2 = CitablePassage(CtsUrn("urn:cts:dummy:unittests.test2.v1_tokens:2"), "And then the time is past.")
     c = CitableTextCorpus([cn1, cn2])
 
     tkns = tokenize(c, ascii)

@@ -30,9 +30,28 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(cn::CitablePassage, ortho::T) where {T <: OrthographicSystem}
+function tokenize(psg::CitablePassage, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
+    @debug("Checking length of workparts for $(urn(psg)) == $(length(workparts(urn(psg))))")
+    if length(workparts(urn(psg))) < 3
+        throw(ArgumentError("Only nodes citable at a specific version level can be tokenized."))
+    end
 
-    tkns = tokenize(cn.text, ortho)
+    versionedurn = nothing
+    
+    if isnothing(exemplar)
+        newversion = isnothing(edition) ? workparts(urn(psg))[3] * "_tokens" : edition  
+        versionedurn = addversion(urn(psg), newversion)
+
+    else
+        newversion = isnothing(edition) ? workparts(urn(psg))[3] : edition
+        version1 =  addversion(urn(psg), newversion) 
+        versionedurn = addexemplar(version1, exemplar)
+    end
+
+
+    #versionedurn = addversion(urn(psg), newversion)
+
+    tkns = tokenize(psg.text, ortho)
 
     citabletokens = []
     n1 = 0 # Int value before 1
@@ -41,12 +60,13 @@ function tokenize(cn::CitablePassage, ortho::T) where {T <: OrthographicSystem}
         if tkn.tokencategory == Orthography.LexicalToken()
             n1 = n1 + 1
             n2 = 96
-            u = CtsUrn(string(cn.urn.urn, ".", n1))
+            refurn = CtsUrn(string(versionedurn.urn, ".", n1))
+            u = isnothing(exemplar) ? refurn : addexemplar(refurn, exemplar)
             push!(citabletokens, (CitablePassage(u, tkn.text), tkn.tokencategory))
             
         else
             n2 = n2 + 1
-            u = CtsUrn(string(cn.urn.urn, ".", n1, Char(n2)))
+            u = CtsUrn(string(versionedurn.urn, ".", n1, Char(n2)))
             push!(citabletokens, (CitablePassage(u, tkn.text), tkn.tokencategory))
            
         end
@@ -61,7 +81,7 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(c::CitableTextCorpus, ortho::T) where {T <: OrthographicSystem}
+function tokenize(c::CitableTextCorpus, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
     tkns = []
     for cn in c.passages
         push!(tkns, tokenize(cn, ortho))
@@ -78,7 +98,7 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(doc::CitableDocument, ortho::T) where {T <: OrthographicSystem}
+function tokenize(doc::CitableDocument, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
     tkns = []
     for psg in doc.passages
         push!(tkns, tokenize(psg, ortho))
