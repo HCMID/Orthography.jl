@@ -79,12 +79,23 @@ When you are tokenizing citable content (either `CitablePassage`s or a `CitableT
 You may include either or neither.  If neither is specified, the resulting URNs are cited at the version level with a version identifier composed of the source version identifer concatenated with `_tokens`.
 
 ```jldoctest simpleseries
-tokenizednodes = tokenize(cn, orthography)
+labellededition = tokenize(cn, orthography, edition = "special_edition_id")
+labellededition[1]
 
 # output
 
-
+(<urn:cts:orthodocs:tokenization.docs.special_edition_id:stooges.1> The, LexicalToken())
 ```
+
+```jldoctest simpleseries
+labelledexemplars = tokenize(cn, orthography, exemplar = "tokens")
+labelledexemplars[1]
+
+# output
+
+(<urn:cts:orthodocs:tokenization.docs.v1.tokens:stooges.1> The, LexicalToken())
+```
+
 ## `CitableTextCorpus`
 
 If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitablePassage`.  If your text corpus has only a single node, the results will therefore be equal to parsing that node separately, as this example shows.
