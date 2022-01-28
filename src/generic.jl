@@ -40,7 +40,7 @@ function tokenize(
     end
 
     versionedurn = nothing
-    @warn("Tokenizing corpus with edition/exemplar $(edition)/$(exemplar)")
+    @debug("Tokenizing corpus with edition/exemplar $(edition)/$(exemplar)")
     if isnothing(exemplar)
         newversion = isnothing(edition) ? workparts(urn(psg))[3] * "_tokens" : edition  
         versionedurn = addversion(urn(psg), newversion)
