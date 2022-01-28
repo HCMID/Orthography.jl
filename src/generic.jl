@@ -30,14 +30,17 @@ $(SIGNATURES)
 
 The return value is a list of pairings of a `CitablePassage` and a token category.  The citable node is citable at the level of the token.
 """
-function tokenize(psg::CitablePassage, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
+function tokenize(
+    psg::CitablePassage, 
+    ortho::T; 
+    edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
     @debug("Checking length of workparts for $(urn(psg)) == $(length(workparts(urn(psg))))")
     if length(workparts(urn(psg))) < 3
         throw(ArgumentError("Only nodes citable at a specific version level can be tokenized."))
     end
 
     versionedurn = nothing
-    
+    @warn("Tokenizing corpus with edition/exemplar $(edition)/$(exemplar)")
     if isnothing(exemplar)
         newversion = isnothing(edition) ? workparts(urn(psg))[3] * "_tokens" : edition  
         versionedurn = addversion(urn(psg), newversion)
@@ -84,7 +87,7 @@ The return value is a list of pairings of a `CitablePassage` and a token categor
 function tokenize(c::CitableTextCorpus, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
     tkns = []
     for cn in c.passages
-        push!(tkns, tokenize(cn, ortho))
+        push!(tkns, tokenize(cn, ortho, edition = edition, exemplar = exemplar))
     end
     tkns  |> Iterators.flatten |> collect
 end
@@ -101,7 +104,7 @@ The return value is a list of pairings of a `CitablePassage` and a token categor
 function tokenize(doc::CitableDocument, ortho::T; edition = nothing, exemplar = nothing) where {T <: OrthographicSystem}
     tkns = []
     for psg in doc.passages
-        push!(tkns, tokenize(psg, ortho))
+        push!(tkns, tokenize(psg, ortho, edition = edition, exemplar = exemplar))
     end
     tkns  |> Iterators.flatten |> collect
 end
