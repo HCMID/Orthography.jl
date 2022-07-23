@@ -1,4 +1,4 @@
-"An orthographic system for a basic alphabetic subset of the ASCII characater set."
+"An orthographic system for a basic alphabetic subset of the ASCII character set."
 struct SimpleAscii <: OrthographicSystem
     codepoints
     tokencategories
