@@ -21,6 +21,7 @@ export LexicalToken, NumericToken, PunctuationToken
 
 export SimpleAscii
 export simpleAscii 
+export WSTokenizer
 
 include("ortho.jl")
 include("basicTypes.jl")
@@ -29,6 +30,7 @@ include("generic.jl")
 include("corpus.jl")
 
 include("simpleAscii.jl")
+include("wstokenizer.jl")
 
 
 end # module
