@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Working with citable corpora · Orthography</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">Orthography</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Overview</a></li><li><span class="tocitem">Guide</span><ul><li><a class="tocitem" href="../validation/">Validating orthography</a></li><li><a class="tocitem" href="../tokenization/">Tokenization</a></li><li class="is-active"><a class="tocitem" href>Working with citable corpora</a><ul class="internal"><li><a class="tocitem" href="#Token-lists"><span>Token lists</span></a></li><li><a class="tocitem" href="#Token-histograms"><span>Token histograms</span></a></li><li><a class="tocitem" href="#Tokenized-editions"><span>Tokenized editions</span></a></li><li><a class="tocitem" href="#Token-index"><span>Token index</span></a></li></ul></li></ul></li><li><span class="tocitem">API documentation</span><ul><li><a class="tocitem" href="../../man/">API documentation: exported types and functions</a></li><li><a class="tocitem" href="../../man/internals/">API documentation: internals</a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Guide</a></li><li class="is-active"><a href>Working with citable corpora</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Working with citable corpora</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/HCMID/Orthography.jl/blob/main/docs/src/guide/corpora.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Working-with-citable-corpora"><a class="docs-heading-anchor" href="#Working-with-citable-corpora">Working with citable corpora</a><a id="Working-with-citable-corpora-1"></a><a class="docs-heading-anchor-permalink" href="#Working-with-citable-corpora" title="Permalink"></a></h1><h2 id="Token-lists"><a class="docs-heading-anchor" href="#Token-lists">Token lists</a><a id="Token-lists-1"></a><a class="docs-heading-anchor-permalink" href="#Token-lists" title="Permalink"></a></h2><p>You can use a tokenizer to compile a list of unique token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the <a href="http://www.lyricsondemand.com/tvthemes/mredlyrics.html">Mr. Ed theme song</a>.</p><pre><code class="language-julia hljs">using Orthography
+using CitableText, CitableCorpus
+corpus = CitableTextCorpus([
+        CitablePassage(CtsUrn(&quot;urn:cts:docstrings:mred.themesong.v1:1&quot;),&quot;A horse is a horse, of course, of course,&quot;),
+        CitablePassage(CtsUrn(&quot;urn:cts:docstrings:mred.themesong.v1:2&quot;),&quot;And no one can talk to a horse of course,&quot;),
+        CitablePassage(CtsUrn(&quot;urn:cts:docstrings:mred.themesong.v1:3&quot;),&quot;That is, of course, unless the horse is the famous Mr. Ed.&quot;),
+])
+lexvalues = tokenvalues(corpus, simpleAscii())
+lexvalues[1:4]
+
+# output
+
+4-element Vector{SubString{String}}:
+ &quot;course&quot;
+ &quot;horse&quot;
+ &quot;of&quot;
+ &quot;is&quot;</code></pre><p>By default, the <code>tokenvalues</code> function only collects lexical tokens, but you can filter by any token type, or by <code>nothing</code> to get a list of all token values.</p><pre><code class="language-julia hljs"> allvalues = tokenvalues(corpus, simpleAscii(); filterby = nothing)
+ allvalues[1:4]
+
+# output
+
+4-element Vector{AbstractString}:
+ &quot;,&quot;
+ &quot;course&quot;
+ &quot;horse&quot;
+ &quot;of&quot;</code></pre><h2 id="Token-histograms"><a class="docs-heading-anchor" href="#Token-histograms">Token histograms</a><a id="Token-histograms-1"></a><a class="docs-heading-anchor-permalink" href="#Token-histograms" title="Permalink"></a></h2><p>You can also count frequencies of tokens.  Like all the other corpus functions, the <code>corpus_histo</code> function counts only lexical tokens by default.  To count all token types, we can pass <code>nothing</code> as the value of an optional <code>filterby</code> parameter.</p><pre><code class="language-julia hljs">
+histo_all = corpus_histo(corpus, simpleAscii(); filterby = nothing)
+histo_all[&quot;course&quot;]
+
+# output
+
+4</code></pre><p>There are lots of commas.</p><pre><code class="language-julia hljs">histo_all[&quot;,&quot;]
+
+# output
+
+6</code></pre><p>Optionally, you can include a token type to limit results.  If we consider only lexical tokens, we should get the same result for &quot;course&quot;.</p><pre><code class="language-julia hljs">histo_lex = corpus_histo(corpus, simpleAscii(); filterby = LexicalToken())
+histo_lex[&quot;course&quot;]
+
+# output
+
+4</code></pre><p>But punctuation tokens will not be part of the histogram.</p><pre><code class="language-julia-repl hljs">julia&gt; histo_lex[&quot;,&quot;]
+ERROR: KeyError: key &quot;,&quot; not found
+[...]</code></pre><h2 id="Tokenized-editions"><a class="docs-heading-anchor" href="#Tokenized-editions">Tokenized editions</a><a id="Tokenized-editions-1"></a><a class="docs-heading-anchor-permalink" href="#Tokenized-editions" title="Permalink"></a></h2><p>You can use an orthography&#39;s tokenizer to create a new corpus, citable at the level of the token.</p><pre><code class="language-julia hljs">
+tkncorpus = tokenizedcorpus(corpus, simpleAscii())
+typeof(tkncorpus)
+
+# output
+
+CitableTextCorpus</code></pre><pre><code class="language-julia hljs">tokenized = tokenizedcorpus(corpus, simpleAscii())
+tokenized.passages[2]
+
+# output
+
+&lt;urn:cts:docstrings:mred.themesong.v1_tokens:1.2&gt; horse</code></pre><h2 id="Token-index"><a class="docs-heading-anchor" href="#Token-index">Token index</a><a id="Token-index-1"></a><a class="docs-heading-anchor-permalink" href="#Token-index" title="Permalink"></a></h2><p>You can index a tokenized edition.  The result is a dictionary.</p><pre><code class="language-julia hljs">idx = corpusindex(corpus, simpleAscii())
+typeof(idx)
+
+# output
+
+Dictionaries.Dictionary{SubString{String}, Vector{CtsUrn}}</code></pre><pre><code class="language-julia hljs">idx[&quot;horse&quot;]
+
+# output
+
+4-element Vector{CtsUrn}:
+ urn:cts:docstrings:mred.themesong.v1_tokens:1.2
+ urn:cts:docstrings:mred.themesong.v1_tokens:1.5
+ urn:cts:docstrings:mred.themesong.v1_tokens:2.8
+ urn:cts:docstrings:mred.themesong.v1_tokens:3.7</code></pre><pre><code class="nohighlight hljs"></code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../tokenization/">« Tokenization</a><a class="docs-footer-nextpage" href="../../man/">API documentation: exported types and functions »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Thursday 22 September 2022 21:05">Thursday 22 September 2022</span>. Using Julia version 1.8.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
