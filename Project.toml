@@ -1,7 +1,7 @@
 name = "Orthography"
 uuid = "0b4c9448-09b0-4e78-95ea-3eb3328be36d"
 authors = ["Neel Smith <dnsmith.neel@gmail.com>"]
-version = "0.17.0"
+version = "0.17.1"
 
 [deps]
 CitableBase = "d6f014bd-995c-41bd-9893-703339864534"
@@ -21,8 +21,7 @@ Unicode = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"
 CitableBase = "10"
 CitableCorpus = "0.12"
 CitableText = "0.15"
-Compat = "3"
-DocStringExtensions = "0.8"
+DocStringExtensions = "0.9"
 Documenter = "0.27"
 OrderedCollections = "1"
 StatsBase = "0.33"
