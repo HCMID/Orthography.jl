@@ -11,7 +11,6 @@ function collecthead(s::AbstractString, arr, stripped=[])
         join(stripped,"")
     else 
         firstch = string(s[1])
-        @info("Look for $(firstch) in $(arr)")
         if occursin(firstch, arr)
             push!(stripped, firstch)
             trimmed = s[2:end]
