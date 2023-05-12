@@ -3,7 +3,7 @@
     s = "Now is the time."
     tkns = tokenize(s, ascii)
     @test length(tkns) == 5
-    
+   
     @test tokentext(tkns[1]) == "Now"
     @test tokentext(tkns[5]) == "."  
     @test tokencategory(tkns[1]) == LexicalToken()
@@ -20,16 +20,19 @@ end
     cn = CitablePassage(psgurn,txt)
 
     tkns = tokenize(cn, ascii) 
+
+ 
     @test length(tkns) == 5
-    @test text(tkns[1][1]) == "Now"
-    @test urn(tkns[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.v1_tokens:1.1")
-    @test tkns[1][2] == LexicalToken()
+    @test tkns[1].passage.text == "Now"
+    @test tkns[1].passage.urn == CtsUrn("urn:cts:dummy:unittests.test1.v1_tokens:1.1")
+    @test tkns[1].tokentype isa LexicalToken
 
     edlabelled = tokenize(cn, ascii, edition="tokenized") 
-    @test urn(edlabelled[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.tokenized:1.1")
+    @test edlabelled[1].passage.urn == CtsUrn("urn:cts:dummy:unittests.test1.tokenized:1.1")
 
     exlabelled = tokenize(cn, ascii, exemplar="tokens") 
-    @test urn(exlabelled[1][1]) == CtsUrn("urn:cts:dummy:unittests.test1.v1.tokens:1.1")
+    @test exlabelled[1].passage.urn == CtsUrn("urn:cts:dummy:unittests.test1.v1.tokens:1.1")
+ 
 end
 
 
@@ -43,5 +46,6 @@ end
     c = CitableTextCorpus([cn1, cn2])
 
     tkns = tokenize(c, ascii)
+
     @test length(tkns) == 12
 end
