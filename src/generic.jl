@@ -51,12 +51,9 @@ function tokenize(
         versionedurn = addexemplar(version1, exemplar)
     end
 
-
-    #versionedurn = addversion(urn(psg), newversion)
-
     tkns = tokenize(psg.text, ortho)
 
-    citabletokens = []
+    citabletokens = CitableToken[]
     n1 = 0 # Int value before 1
     n2 = 96 # Char value before 'a'
     for tkn in tkns
@@ -65,12 +62,12 @@ function tokenize(
             n2 = 96
             refurn = CtsUrn(string(versionedurn.urn, ".", n1))
             u = isnothing(exemplar) ? refurn : addexemplar(refurn, exemplar)
-            push!(citabletokens, (CitablePassage(u, tkn.text), tkn.tokencategory))
+            push!(citabletokens, CitableToken(CitablePassage(u, tkn.text), tkn.tokencategory))
             
         else
             n2 = n2 + 1
             u = CtsUrn(string(versionedurn.urn, ".", n1, Char(n2)))
-            push!(citabletokens, (CitablePassage(u, tkn.text), tkn.tokencategory))
+            push!(citabletokens, CitableToken(CitablePassage(u, tkn.text), tkn.tokencategory))
            
         end
     end

@@ -11,7 +11,11 @@ using OrderedCollections
 
 export OrthographicSystem, OrthographyTrait
 export IsOrthographicSystem, NotOrthographicSystem
-export validcp, validstring,  tokenize, codepoints, tokentypes
+export validcp, validstring, codepoints, tokentypes
+
+export CitableToken 
+export tokenize
+
 export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc
 
@@ -31,6 +35,5 @@ include("corpus.jl")
 
 include("simpleAscii.jl")
 include("wstokenizer.jl")
-
 
 end # module

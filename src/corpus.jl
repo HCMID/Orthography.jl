@@ -1,4 +1,13 @@
 
+struct CitableToken
+    passage::CitablePassage
+    tokentype::TokenCategory
+end
+
+
+
+
+
 """Compute a list of unique string values for tokens appearing in this corpus. By default, filter only for tokens of type `LexicalToken()`, or optionally filter by any token category in the corpus, or `nothing` to list all token values without filtering.
 
 $(SIGNATURES)
