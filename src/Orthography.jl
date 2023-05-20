@@ -1,5 +1,13 @@
 module Orthography
 
+import Base: show
+import Base: ==
+
+import CitableBase: citabletrait
+import CitableBase: urntype
+import CitableBase: urn
+import CitableBase: label
+
 using Unicode
 using Documenter, DocStringExtensions
 
@@ -31,6 +39,7 @@ include("ortho.jl")
 include("basicTypes.jl")
 include("utils.jl")
 include("generic.jl")
+include("token.jl")
 include("corpus.jl")
 
 include("simpleAscii.jl")
