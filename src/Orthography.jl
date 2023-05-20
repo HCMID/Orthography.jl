@@ -8,6 +8,10 @@ import CitableBase: urntype
 import CitableBase: urn
 import CitableBase: label
 
+import CitableBase: cextrait
+import CitableBase: cex
+import CitableBase: fromcex
+
 using Unicode
 using Documenter, DocStringExtensions
 
@@ -22,7 +26,7 @@ export IsOrthographicSystem, NotOrthographicSystem
 export validcp, validstring, codepoints, tokentypes
 
 export CitableToken 
-export tokenize
+export tokenize 
 
 export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc

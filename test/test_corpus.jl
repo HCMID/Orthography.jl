@@ -32,4 +32,7 @@
     tkncorpus = tokenizedcorpus(c, simpleAscii())
     @test typeof(tkncorpus) == CitableTextCorpus
 
+
+    # corpus index
+    # corpus from vector of citabletokens
 end

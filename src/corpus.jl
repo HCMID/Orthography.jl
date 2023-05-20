@@ -18,13 +18,13 @@ $(SIGNATURES)
 
 """
 function corpus_histo(c::CitableTextCorpus, ortho::T; filterby = nothing) where {T <: OrthographicSystem}
-    corpustokens = tokenize(c, ortho)
+    tkns = tokenize(c, ortho)
     if isnothing(filterby)
-        txt = map(tkn -> tkn[1].text, corpustokens)
+        txt = map(tkn -> tkn.passage.text, tkns)
         sort!(OrderedDict(countmap(txt)); byvalue=true, rev=true)
     else
-        filtered = filter(tkn -> tkn[2] == filterby, corpustokens)
-        txt = map(tkn -> tkn[1].text, filtered)
+        filtered = filter(t -> t.tokentype == filterby, tkns)
+        txt = map(tkn -> tkn.passage.text, filtered)
         sort!(OrderedDict(countmap(txt)); byvalue=true, rev=true)
     end
 end
@@ -34,19 +34,24 @@ end
 
 $(SIGNATURES)
 """
-function tokenizedcorpus(c::CitableTextCorpus, orthography::T; filterby = LexicalToken()) where {T <: OrthographicSystem}
-    nodepairs = tokenize(c, orthography)
-    if isnothing(filterby)
-        map(pr -> pr[1], nodepairs) |> CitableTextCorpus
-    else
-        filtered = filter(pr -> pr[2] == filterby, nodepairs) 
-        map(pr -> pr[1], filtered) |> CitableTextCorpus
-    end
+function tokenizedcorpus(c::CitableTextCorpus, orthography::T; filterby = nothing) where {T <: OrthographicSystem}
+    tkns = tokenize(c, orthography)
+    tokenizedcorpus(tkns, filterby = filterby)
 end
 
 
+"""Compose a `CitableTextCorpus` citable at token level.
 
-
+$(SIGNATURES)
+"""
+function tokenizedcorpus(v::Vector{CitableToken}; filterby = nothing)
+    if isnothing(filterby)
+        map(t -> t.passage, v) |> CitableTextCorpus
+    else
+        filtered = filter(t -> t.tokentype == filterby, v) 
+        map(t -> t.passage, filtered) |> CitableTextCorpus
+    end
+end
 
 """Compile an index of token values to token-level URNs.
 
@@ -55,15 +60,16 @@ $(SIGNATURES)
 By default, `corpusindex` only includes lexical tokens.  Supply a token category to filter for, or `nothing` to index all token types.
 """
 function corpusindex(c::CitableTextCorpus, orthography::T; filterby = LexicalToken())  where {T <: OrthographicSystem}
-    tokenpairs = []
+    tkns = CitableToken[]
     if isnothing(filterby)
-        tokenpairs = tokenize(c, orthography)
+        tkns = tokenize(c, orthography)
     else 
-        allpairs = tokenize(c, orthography)
-        tokenpairs = filter(pr -> pr[2] == filterby, allpairs)
+        tkns = tokenize(c, orthography)
+        tokenpairs = filter(t -> t.tokentype == filterby, tkns)
     end
-    urns = map(pr -> pr[1].urn, tokenpairs)
-    txtvals = map(pr -> pr[1].text, tokenpairs)
+    urns = map(t -> t.passage.urn, tkns)
+    txtvals = map(t -> t.passage.text, tkns)
     tbl = Table(tkn = txtvals, urn = urns)
     TypedTables.group(getproperty(:tkn), getproperty(:urn), tbl)
 end
+
