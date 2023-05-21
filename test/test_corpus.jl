@@ -20,12 +20,22 @@
         CitablePassage(CtsUrn("urn:cts:dummy:ac.who.v1:17"), "Costello: That's who?"),
         CitablePassage(CtsUrn("urn:cts:dummy:ac.who.v1:18"), "Abbott: Yes.)")
     ])
+    expectedtokencount = 37
+    expectedlexcount = 26
+    expectednormedcount = 24
     histo = corpus_histo(c, simpleAscii())
+    @test length(histo) == expectedtokencount
     @test histo["Who"] == 4
     @test histo["Costello"] == 9
 
+    histofiltered = corpus_histo(c, simpleAscii(), filterby = LexicalToken())
+    @test length(histofiltered) == expectedlexcount
+    histonormed = corpus_histo(c, simpleAscii(), filterby = LexicalToken(), normalizer = lowercase)
+    @test length(histonormed) == expectednormedcount
+
+    # By default, filters for LexicalTokens only:
     lexvalues = tokenvalues(c, simpleAscii())
-    @test length(lexvalues) == 26
+    @test length(lexvalues) == expectedlexcount
     @test lexvalues[1] == "Costello"
     @test lexvalues[2] == "Abbott"
 
@@ -33,6 +43,27 @@
     @test typeof(tkncorpus) == CitableTextCorpus
 
 
-    # corpus index
-    # corpus from vector of citabletokens
+    @test corpusindex(c, simpleAscii()) |> length == expectedlexcount
+    @test corpusindex(c, simpleAscii(), filterby = nothing) |> length == expectedtokencount
+    @test corpusindex(c, simpleAscii(), normalizer = lowercase) |> length == expectednormedcount
+
+
+
+    rawtokens = tokenize(c, simpleAscii())
+
+    rawcorp = tokenizedcorpus(rawtokens)
+    @test  length(rawcorp) == 107
+    @test rawcorp.passages[1].text == "Costello"
+    @test rawcorp.passages[2].text == ":"
+
+    lexcorp =  tokenizedcorpus(rawtokens, filterby = LexicalToken())
+    @test length(lexcorp) == 61
+    @test lexcorp.passages[1].text == "Costello"
+    @test lexcorp.passages[2].text == "Well"
+
+    normedcorp = tokenizedcorpus(rawtokens, filterby = LexicalToken(), normalizer = lowercase)
+    @test length(normedcorp) == 61
+    @test normedcorp.passages[1].text == "costello"
+    @test normedcorp.passages[2].text == "well"
+
 end
