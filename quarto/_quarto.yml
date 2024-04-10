@@ -49,6 +49,7 @@ website:
     - title: "Guides"
       contents:
         - guides/index.qmd
+        - guides/tokenization-guide.qmd
         - guides/diyortho.qmd
 
     - title: "Reference"
