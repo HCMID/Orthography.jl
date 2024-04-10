@@ -18,14 +18,17 @@ website:
     left:
       - text: "Home"
         file: index.qmd
+      - text: "Concepts"
+        file: concepts/index.qmd  
       - text: "Tutorials"
         file: tutorials/index.qmd          
-      - text: "Concepts"
-        file: concepts/index.qmd   
+ 
       - text: "Guides"
         file: guides/index.qmd           
       - text: "Reference"
         file: reference/index.qmd  
+      - text: "Acknowledgments"
+        file: acks.qmd
     right:   
       - icon: github
         href: https://github.com/hcmid/Orthography.jl
@@ -39,7 +42,9 @@ website:
     - title: "Tutorials"
       contents: 
         - tutorials/index.qmd
+        - tutorials/validation.qmd
         - tutorials/tokenization.qmd
+        - tutorials/corpora.qmd
 
     - title: "Guides"
       contents:

@@ -2,4 +2,9 @@
 title: "Orthography"
 ---
 
-Concepts and implementation in a Julia interface.
+
+This site explains the conceptual model of orthography developed over many years in the work of the Holy Cross Manuscripts, Inscriptions and Documents Club (MID). 
+
+It also includes documentation of `Orthography.jl`, a Julia package that implements the MID model of orthography. `Orthography.jl` supports working with editions of digital texts adhering to a specified orthography.
+
+

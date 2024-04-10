@@ -2,4 +2,10 @@
 title: Tutorials
 ---
 
-Learn `Orthography.jl`.
+
+This section has introductory tutorials to help you get started with the Julia package `Orthography.jl`
+
+
+## Prerequisites
+
+You’ll need to [install Julia](https://julialang.org/downloads/) before you can run these tutorials.
