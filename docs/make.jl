@@ -16,12 +16,8 @@ using Orthography
 makedocs(
     sitename = "Orthography",
     pages = [
-        "Overview" => "index.md",
-        "Guide" => [
-            "guide/validation.md",
-            "guide/tokenization.md",
-            "guide/corpora.md"
-        ],
+        "Orthography.jl" => "index.md",
+   
         "API documentation" => [
             "man/index.md",
             "man/internals.md"

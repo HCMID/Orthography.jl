@@ -1,4 +1,7 @@
-# Validating orthography
+---
+title: "Validating orthography"
+---
+
 
 ```@meta
 CurrentModule = Orthography

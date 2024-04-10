@@ -1,5 +1,6 @@
-# Working with citable corpora
-
+---
+title: "Working with citable corpora"
+---
 
 ## Token lists
 

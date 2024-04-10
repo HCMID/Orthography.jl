@@ -32,9 +32,14 @@ website:
         aria-label: GitHub
 
   sidebar:
+    - title: "Concepts"
+      contents: 
+        - concepts/index.qmd
+
     - title: "Tutorials"
       contents: 
         - tutorials/index.qmd
+        - tutorials/tokenization.qmd
 
     - title: "Guides"
       contents:
@@ -44,9 +49,7 @@ website:
       contents: 
         - reference/index.qmd
 
-    - title: "Concepts"
-      contents: 
-        - concepts/index.qmd
+
 
         
 
