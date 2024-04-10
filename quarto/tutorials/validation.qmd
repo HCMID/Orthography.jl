@@ -43,5 +43,5 @@ validstring( "OK!", orthography)
 
 ```{julia}
 camtweets = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
-validstring(camtweets, orthography)
+validstring(camnewton, orthography)
 ```
