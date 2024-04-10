@@ -4,25 +4,23 @@ title: "Validating orthography"
 
 
 
-## `SimpleAscii`
 
-The examples on this page use `SimpleAscii`, an orthography for a basic alphabetic subset of the ASCII character set. (In)
 
-that is only meant to demonstrate the functionality of an orthographic system. 
 
-`SimpleAscii` is a simple implementation of an orthographic system . 
+## An example orthographic system: `SimpleAscii`
 
-:::{.callout-caution}
-## Note on these examples
- Its definitions of lexical and punctuation tokens are reasonable, but the treatment of numeric tokens is naive and not suitable for real-world use.
-:::
-
-The `simpleAscii` function creates a `SimpleAscii` orthography for you. 
+The examples on this page use `SimpleAscii`, an orthography for a basic alphabetic subset of the ASCII character set that is included in the `Orthography` package.  The function `simpleAscii` creates an instance of a `SimpleAscii` orthography. 
 
 ```{julia}
+#| output: false
 using Orthography
 orthography = simpleAscii()
 ```
+
+:::{.callout-caution}
+## Note
+The `SimpleAscii` orthography is only meant to demonstrate the functionality of an orthographic system. Its definitions of lexical and punctuation tokens are reasonable, but the treatment of numeric tokens is naive and not suitable for real-world use.
+:::
 
 ## The character set of an orthography
 
@@ -37,13 +35,13 @@ codepointlist = codepoints(orthography)
 Note that the results is a single String value, which in Julia can also be treated as a Vector of Chars.
 
 
-The `validstring` function can use the orthographic system's information about what codepoints are valid.
+The `validstring` function uses the orthographic system's information about what codepoints are valid to evaluate where a string of characters is valid.
 
 ```{julia}
 validstring( "OK!", orthography)
 ```
 
 ```{julia}
-newton = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
-validstring(newton, orthography)
+camtweets = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
+validstring(camtweets, orthography)
 ```
