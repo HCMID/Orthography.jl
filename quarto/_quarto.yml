@@ -49,10 +49,12 @@ website:
     - title: "Guides"
       contents:
         - guides/index.qmd
+        - guides/diyortho.qmd
 
     - title: "Reference"
       contents: 
         - reference/index.qmd
+        - reference/implementations.qmd
 
 
 

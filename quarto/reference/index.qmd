@@ -2,4 +2,5 @@
 title: Reference
 ---
 
-Look it up here.
+
+Current API docs for the `Orthography.jl` package are on github at [https://hcmid.github.io/Orthography.jl/stable/](https://hcmid.github.io/Orthography.jl/stable/).

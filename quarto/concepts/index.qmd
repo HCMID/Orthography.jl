@@ -4,7 +4,19 @@ title: Concepts
 
 
 
-An orthographic system comprises a specified character set with defined semantics. 
+An *orthographic system* comprises a specified character set with defined semantics. Since its character set is specified, we can enumerate the valid characters in an orthographic system, and determine whether or not an arbitrary character or codepoint belongs to that set.
+
+The semantics of an orthographic system determine how its characters can be validly combined to form *tokens*. 
+
+A *token* is a string of valid characters
+
+a text using that orthography can be tokenized.
+
+
+```{julia}
+using Orthography
+ortho = simpleAscii()
+```
 
 
 - explicitly defines a set of token types

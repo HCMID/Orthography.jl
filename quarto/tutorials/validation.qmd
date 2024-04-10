@@ -3,94 +3,47 @@ title: "Validating orthography"
 ---
 
 
-```@meta
-CurrentModule = Orthography
 
-```
+## `SimpleAscii`
 
-Subtypes of an `OrthographicSystem` must implement three functions:
+The examples on this page use `SimpleAscii`, an orthography for a basic alphabetic subset of the ASCII character set. (In)
 
-- `codepoints(orthography)`: returns a complete list of codepoints allowed in this orthography
-- `tokentypes(orthography)`: returns a complete list of the types of tokens that can be recognized in this orthography.  These are subtypes of `TokenCategory`.
-- `tokenize(s, orthography)`: use `orthography` to tokenize `s`.  This function is the basis for the higher-order functions presented in the following pages.
+that is only meant to demonstrate the functionality of an orthographic system. 
 
+`SimpleAscii` is a simple implementation of an orthographic system . 
 
-## Example: `SimpleAscii`
+:::{.callout-caution}
+## Note on these examples
+ Its definitions of lexical and punctuation tokens are reasonable, but the treatment of numeric tokens is naive and not suitable for real-world use.
+:::
 
+The `simpleAscii` function creates a `SimpleAscii` orthography for you. 
 
-
-!!! warning
-    `SimpleAscii` is meant only to demonstrate the functionality of an orthographic system.  Its definitions of lexical and punctuation tokens are reasonable, but the treatment of
-    numeric tokens is naive and not suitable for real-world use.
-
-The `SimpleAscii` orthography implements these five functions for a basic alphabetic subset of the ASCII character set. The `simpleAscii` function creates a `SimpleAscii` orthography for you.
-
-
-```jldoctest simpleseries
+```{julia}
 using Orthography
 orthography = simpleAscii()
-typeof(orthography)
-
-# output
-
-SimpleAscii
-```
-```jldoctest simpleseries
-typeof(orthography) |> supertype
-
-# output
-
-OrthographicSystem
 ```
 
+## The character set of an orthography
 
-### Enumerating codepoints and tokens
+We can find all the codepoints that are allowed in an orthography with the `codepoints` function
 
 
-```jldoctest simpleseries
-codepoints(orthography)
 
-# output
-
-"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,-:;!?'\"()[] \t\n"
+```{julia}
+codepointlist = codepoints(orthography)
 ```
 
+Note that the results is a single String value, which in Julia can also be treated as a Vector of Chars.
 
-
-```
-tokentypes(orthography)
-
-# output
-
-3-element Array{TokenCategory,1}:
- LexicalToken()
- NumericToken()
- PunctuationToken()
-```
-
-### Testing valid strings
 
 The `validstring` function can use the orthographic system's information about what codepoints are valid.
 
-```jldoctest simpleseries
+```{julia}
 validstring( "OK!", orthography)
-
-# output
-
-true
 ```
 
-```jldoctest simpleseries
-cam = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
-validstring(cam, orthography)
-
-# output
-
-false
+```{julia}
+newton = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
+validstring(newton, orthography)
 ```
-
-
-
-### Tokenization
-
-See the following section for an overview of how to use an orthographic system for tokenization.

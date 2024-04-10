@@ -2,6 +2,21 @@
 title: Tokenization
 ---
 
+
+
+```
+tokentypes(orthography)
+
+# output
+
+3-element Array{TokenCategory,1}:
+ LexicalToken()
+ NumericToken()
+ PunctuationToken()
+```
+
+
+
 Tokenization parses a string value into a sequence of classified substrings.  For substrings that are valid in the orthographic system, the classification will be one of the token types enumerated for that orthographic system.
 
 You can use a tokenizer to tokenize strings, citable passages of texts, or entire text corpora.
