@@ -3,7 +3,7 @@ title: "Tokenization in depth"
 ---
 
 :::{.callout-warning}
-Just a dump of notes here: contents TBD.
+Just a dump of notes here: contents TBA.
 :::
 
 ## Example

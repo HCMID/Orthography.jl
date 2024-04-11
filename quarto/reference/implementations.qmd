@@ -2,7 +2,7 @@
 title: "Implementations"
 ---
 
-The following Julia packages available from juliahub implement one or more concrete subtypes of the `OrthographicSystem` abstraction.
+The following Julia packages available from the Julia central registry implement one or more concrete subtypes of the `OrthographicSystem` abstraction.
 
 - `LatinOrthography.jl`
 - `PolytonicGreek.jl`
