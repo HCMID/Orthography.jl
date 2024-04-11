@@ -1,0 +1,69 @@
+project:
+  type: website
+jupyter: julia-1.10  
+theme: spacelab
+execute:
+  freeze: auto
+date: last-modified  
+margin-header: "⚠️ *Draft release.*"
+format:
+  html: 
+    toc: true
+
+
+website:
+  title: "orthography"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Concepts"
+        file: concepts/index.qmd  
+      - text: "Tutorials"
+        file: tutorials/index.qmd          
+ 
+      - text: "Guides"
+        file: guides/index.qmd           
+      - text: "Reference"
+        file: reference/index.qmd  
+      - text: "Acknowledgments"
+        file: acks.qmd
+    right:   
+      - icon: github
+        href: https://github.com/hcmid/Orthography.jl
+        aria-label: GitHub
+
+  sidebar:
+    - title: "Concepts"
+      contents: 
+        - concepts/index.qmd
+
+    - title: "Tutorials"
+      contents: 
+        - tutorials/index.qmd
+        - tutorials/validation.qmd
+        - tutorials/tokenization.qmd
+        - tutorials/corpora.qmd
+
+    - title: "Guides"
+      contents:
+        - guides/index.qmd
+        - guides/tokenization-guide.qmd
+        - guides/diyortho.qmd
+
+    - title: "Reference"
+      contents: 
+        - reference/index.qmd
+        - reference/implementations.qmd
+
+
+
+        
+
+    - title: "Home"
+      contents:
+        - index.qmd               
+ 
+

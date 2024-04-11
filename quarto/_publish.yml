@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: a672971a-e45e-4b41-be92-31763ea8252a
+      url: 'https://neelsmith.quarto.pub/orthography'

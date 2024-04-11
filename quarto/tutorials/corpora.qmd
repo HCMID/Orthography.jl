@@ -1,11 +1,12 @@
-# Working with citable corpora
-
+---
+title: "Working with citable corpora"
+---
 
 ## Token lists
 
 You can use a tokenizer to compile a list of unique token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
 
-```jldoctest histo
+```{julia}
 using Orthography
 using CitableText, CitableCorpus
 corpus = CitableTextCorpus([
@@ -14,33 +15,19 @@ corpus = CitableTextCorpus([
         CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong.v1:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
 lexvalues = tokenvalues(corpus, simpleAscii())
+```
+
+```{julia}
 lexvalues[1:4]
-
-# output
-
-4-element Vector{SubString{String}}:
- "course"
- "horse"
- "of"
- "is"
 ```
 
 
 By default, the `tokenvalues` function only collects lexical tokens, but you can filter by any token type, or by `nothing` to get a list of all token values.
 
 
-```jldoctest histo
  allvalues = tokenvalues(corpus, simpleAscii(); filterby = nothing)
  allvalues[1:4]
 
-# output
-
-4-element Vector{AbstractString}:
- ","
- "course"
- "horse"
- "of"
-```
 
 
 
@@ -48,91 +35,61 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
 
 
 You can also count frequencies of tokens.  Like all the other corpus functions, the `corpus_histo` function counts only lexical tokens by default.  To count all token types, we can pass `nothing` as the value of an optional `filterby` parameter.
-```jldoctest histo
 
+```{julia}
 histo_all = corpus_histo(corpus, simpleAscii(); filterby = nothing)
+
+```
+
+```{julia}
 histo_all["course"]
-
-# output
-
-4
 ```
 
 There are lots of commas.
 
-```jldoctest histo
+```{julia}
 histo_all[","]
-
-# output
-
-6
 ```
 
 Optionally, you can include a token type to limit results.  If we consider only lexical tokens, we should get the same result for "course".
 
-```jldoctest histo
+
+```{julia}
 histo_lex = corpus_histo(corpus, simpleAscii(); filterby = LexicalToken())
 histo_lex["course"]
-
-# output
-
-4
 ```
 
 But punctuation tokens will not be part of the histogram.
 
-```jldoctest histo
-julia> histo_lex[","]
-ERROR: KeyError: key "," not found
-[...]
+```{julia}
+haskey(histo_lex,",")
 ```
 
 ## Tokenized editions
 
 You can use an orthography's tokenizer to create a new corpus, citable at the level of the token.
 
-
-```jldoctest histo
-
+```{julia}
 tkncorpus = tokenizedcorpus(corpus, simpleAscii())
-typeof(tkncorpus)
-
-# output
-
-CitableTextCorpus
 ```
 
-```jldoctest histo
+```{julia}
 tokenized = tokenizedcorpus(corpus, simpleAscii())
-tokenized.passages[2]
-
-# output
-
-<urn:cts:docstrings:mred.themesong.v1_tokens:1.2> horse
 ```
+
+
+
 
 
 ## Token index
 
-You can index a tokenized edition.  The result is a dictionary.
+You can index a tokenized edition.  The result is a dictionary keyed by token strings, and yielding lists of CTS URNs.
 
-```jldoctest histo
+```{julia}
 idx = corpusindex(corpus, simpleAscii())
-typeof(idx)
-
-# output
-
-Dictionaries.Dictionary{SubString{String}, Vector{CtsUrn}}
 ```
 
-```jldoctest histo
+
+```{julia}
 idx["horse"]
-
-# output
-
-4-element Vector{CtsUrn}:
- urn:cts:docstrings:mred.themesong.v1_tokens:1.2
- urn:cts:docstrings:mred.themesong.v1_tokens:1.5
- urn:cts:docstrings:mred.themesong.v1_tokens:2.8
- urn:cts:docstrings:mred.themesong.v1_tokens:3.7
-``` 
+```

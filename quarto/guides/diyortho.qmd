@@ -1,0 +1,20 @@
+---
+title: "Build your own orthographic system"
+---
+
+
+:::{.callout-warning}
+Just a dump of notes here: contents TBA.
+:::
+
+
+
+`Orthography.jl` defines an abstract type `OrthographicSystem`
+
+Concrete subtypes must implement three functions:
+
+- `codepoints(orthography)`: returns a complete list of codepoints allowed in this orthography
+- `tokentypes(orthography)`: returns a complete list of the types of tokens that can be recognized in this orthography.  These are subtypes of `TokenCategory`.
+- `tokenize(s, orthography)`: use `orthography` to tokenize `s`.  This function is the basis for the higher-order functions presented in the following pages.
+
+

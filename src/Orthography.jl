@@ -26,7 +26,7 @@ export IsOrthographicSystem, NotOrthographicSystem
 export validcp, validstring, codepoints, tokentypes
 
 export CitableToken 
-export tokenize 
+export tokenize, urn, passage
 
 export corpus_histo, tokenvalues, tokenizedcorpus, corpusindex
 export nfkc

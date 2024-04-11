@@ -1,0 +1,133 @@
+---
+title: Tokenization
+---
+
+
+Orthographies allow you to break up a continuous passage of text into a series of tokens. The examples on this page use `SimpleAscii`, an orthography for a basic alphabetic subset of the ASCII character set.
+
+
+```{julia}
+#| output: false
+using Orthography
+orthography = simpleAscii()
+```
+
+Tokenization parses a string value into a sequence of classified substrings.  You can see the types of tokens that an orthography recognizes with the `tokentypes` function.
+
+```{julia}
+tokentypes(orthography)
+```
+
+
+Whenever the token  value is a valid token in the orthographic system, the classification will be one of these enumerated token types.
+
+
+## Tokenizing strings
+
+Tokenize a string with the `tokenize` function.
+
+```{julia}
+s = "Four score and seven years ago..."
+tokens = tokenize(s, orthography)
+```
+
+The result is a vector of `OrthographicToken`s. You can find the text content of a token with the `tokentext` function.
+
+```{julia}
+tokens[1] |> tokentext
+```
+
+
+
+The `tokencategory` function tells you its type.
+
+```{julia}
+tokens .|> tokencategory
+```
+
+A common pattern is to filter a token to include only tokens of a particular type,  e.g., lexical tokens for futher analysis (such as morphological parsing).
+
+```{julia}
+lextokens = filter(t -> tokencategory(t) isa LexicalToken, tokens)
+```
+
+You can use Julia broadcasting to extract the text value of all the lexical tokens.
+
+```{julia}
+vocab = lextokens .|> tokentext
+```
+
+## Tokenizing citable texts
+
+The `tokenize` function is also aware of the structures of citable texts defined in the `CitableCorpus` package. In addition to tokenizing string values, you can tokenize a `CitablePassage` or a `CitableTextCorpus`.
+
+
+:::{.callout-tip}
+You can learn about citable text corpora and the `CitableCorpus` package at [https://neelsmith.quarto.pub/citablecorpus/](https://neelsmith.quarto.pub/citablecorpus/)
+:::
+
+### Citable passages
+
+When you tokenize a `CitablePassage`, the result resembles an `OrthographicToken` in that it includes a category for each token. Instead of a simple text value for the token, however, the category is paired with a new `CitablePassage`. The text value of the passage is the text of a the single token. Its URN value uniquely identifies it with a reference one level of citation deeper than the original passage.
+
+```{julia}
+using CitableText, CitableCorpus
+psgurn = CtsUrn("urn:cts:orthodocs:tokenization.docs.v1:sample")
+cn = CitablePassage(psgurn, s)
+tokenizedpassages = tokenize(cn, orthography)
+```
+
+The `urn` function gives you this new, token-level URN.
+
+```{julia}
+tokenizedpassages[1] |> urn
+```
+
+To get the text and type of hte token, use the same functions you used with `OrthographicToken`s.
+
+```{julia}
+tokenizedpassages[1] |> tokentext
+```
+
+```{julia}
+tokenizedpassages[1] |> tokencategory
+```
+
+If you prefer to get the citable passage as a `CitablePassage` object, use the `passage` function.
+
+
+```{julia}
+tokenizedpassages[1] |> passage
+```
+
+
+One common idiom might be to get a new collection of citable passages.
+
+```{julia}
+tokenizedpassages .|> passage
+```
+
+You could construct new citable corpus from this list.
+
+```{julia}
+tokenizedpassages .|> passage |> CitableTextCorpus
+```
+
+
+
+
+### A citable text corpus
+
+If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse an individual `CitablePassage`.  
+
+
+```{julia}
+corpus = CitableTextCorpus([cn])
+tokenizedcorpus = tokenize(corpus, orthography)
+```
+
+If your text corpus has only a single node, the results will therefore be equal to parsing that node separately.
+
+```{julia}
+tokenizedcorpus == tokenizedpassages
+```

@@ -1,0 +1,13 @@
+---
+title: Concepts
+---
+
+
+## Character sets and tokens
+
+An *orthographic system* is defined by a specified character set with specified semantics. Since its character set is specified, we can enumerate the valid characters in an orthographic system, and determine whether or not an arbitrary codepoint belongs to that set. The semantics of an orthographic system determine how its characters can be validly combined to form *tokens*. 
+
+A *token* is a classified string of characters. For any given orthography, we can enumerate the set of recognized classes of tokens. These could include more generic classes (lexical tokens, or punctuation tokens), or more specialized types of tokens (e.g., floating point numbers like "9.9e-5", abbreviations like "Dr." or Latin praenomina like "M.").
+
+A token is *valid* if satisfies two criteria. First, each code point in the token must belong to the orthography's character set, and second, the composition of the token's characters must be valid for that specific type of token. For example, an abbreviation token might be required to end with a period, or a simple numeric token might be required to include only the characters `0` - `9`.
+

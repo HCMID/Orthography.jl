@@ -1,0 +1,42 @@
+---
+title: "Orthographic validation"
+---
+
+## An example orthographic system: `SimpleAscii`
+
+The examples on this page use `SimpleAscii`, an orthography for a basic alphabetic subset of the ASCII character set that is included in the `Orthography` package.  The function `simpleAscii` creates an instance of a `SimpleAscii` orthography. 
+
+```{julia}
+#| output: false
+using Orthography
+orthography = simpleAscii()
+```
+
+:::{.callout-caution}
+## Note
+The `SimpleAscii` orthography is only meant to demonstrate the functionality of an orthographic system. Its definitions of lexical and punctuation tokens are reasonable, but the treatment of numeric tokens is naive and not suitable for real-world use.
+:::
+
+## The character set of an orthography
+
+We can find all the codepoints that are allowed in an orthography with the `codepoints` function
+
+
+
+```{julia}
+codepointlist = codepoints(orthography)
+```
+
+Note that the results is a single String value, which in Julia can also be treated as a Vector of `Char`s.
+
+
+The `validstring` function uses the orthographic system's information about what codepoints are valid to evaluate whether a string of characters is valid.
+
+```{julia}
+validstring( "OK!", orthography)
+```
+
+```{julia}
+camtweets = "Thë ōnly thîng bëttër than havîng a qualîty cîgar... îs havîng gōōd cōnvërsatîon tō accōmpany ît wîth"
+validstring(camtweets, orthography)
+```
