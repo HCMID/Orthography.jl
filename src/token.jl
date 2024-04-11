@@ -45,6 +45,18 @@ function urn(ct::CitableToken)
     ct.passage.urn
 end
 
+function passage(ct::CitableToken)
+    ct.passage
+end
+
+function tokentext(ct::CitableToken)
+    ct.passage.text
+end
+
+function tokencategory(ct::CitableToken)
+    ct.tokentype
+end
+
 """Label for `ct`.
 $(SIGNATURES)
 Required function for `Citable` abstraction.

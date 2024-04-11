@@ -23,3 +23,20 @@ ortho = simpleAscii()
 The tokenizing functionality can be applied to strings of text, citable text passages, or entire citable corpora.  It can be applied to index a corpus by token, to compile token lists for a corpus, to compute token histograms for a corpus, and to generate a new corpus citable at the level of the token.
 
 
+
+
+### Specifying resulting URNs
+
+When you are tokenizing citable content (either `CitablePassage`s or a `CitableTextCorpus`), you can include optional parameters to specify the form of the citable tokenized content:
+
+- `edition` will be used as the value of the version identifier
+- `exemplar` will be used as the value of the exemplar identifier
+
+You may include either or neither.  If neither is specified, the resulting URNs are cited at the version level with a version identifier composed of the source version identifer concatenated with `_tokens`.
+
+labellededition = tokenize(cn, orthography, edition = "special_edition_id")
+labellededition[1]
+
+
+labelledexemplars = tokenize(cn, orthography, exemplar = "tokens")
+labelledexemplars[1]
