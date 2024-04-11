@@ -6,7 +6,7 @@ title: "Working with citable corpora"
 
 You can use a tokenizer to compile a list of unique token values in a corpus. The tokens will be sorted by their frequency in the corpus.  Here are the first four tokens in the resulting list for the first lines of the [Mr. Ed theme song](http://www.lyricsondemand.com/tvthemes/mredlyrics.html).
 
-
+```{julia}
 using Orthography
 using CitableText, CitableCorpus
 corpus = CitableTextCorpus([
@@ -15,8 +15,11 @@ corpus = CitableTextCorpus([
         CitablePassage(CtsUrn("urn:cts:docstrings:mred.themesong.v1:3"),"That is, of course, unless the horse is the famous Mr. Ed."),
 ])
 lexvalues = tokenvalues(corpus, simpleAscii())
-lexvalues[1:4]
+```
 
+```{julia}
+lexvalues[1:4]
+```
 
 
 By default, the `tokenvalues` function only collects lexical tokens, but you can filter by any token type, or by `nothing` to get a list of all token values.
@@ -33,51 +36,60 @@ By default, the `tokenvalues` function only collects lexical tokens, but you can
 
 You can also count frequencies of tokens.  Like all the other corpus functions, the `corpus_histo` function counts only lexical tokens by default.  To count all token types, we can pass `nothing` as the value of an optional `filterby` parameter.
 
-
+```{julia}
 histo_all = corpus_histo(corpus, simpleAscii(); filterby = nothing)
+
+```
+
+```{julia}
 histo_all["course"]
+```
 
 There are lots of commas.
 
+```{julia}
 histo_all[","]
-
+```
 
 Optionally, you can include a token type to limit results.  If we consider only lexical tokens, we should get the same result for "course".
 
+
+```{julia}
 histo_lex = corpus_histo(corpus, simpleAscii(); filterby = LexicalToken())
 histo_lex["course"]
-
+```
 
 But punctuation tokens will not be part of the histogram.
 
-julia> histo_lex[","]
-ERROR: KeyError: key "," not found
-[...]
+```{julia}
+haskey(histo_lex,",")
 ```
 
 ## Tokenized editions
 
 You can use an orthography's tokenizer to create a new corpus, citable at the level of the token.
 
-
+```{julia}
 tkncorpus = tokenizedcorpus(corpus, simpleAscii())
-typeof(tkncorpus)
+```
 
-
+```{julia}
 tokenized = tokenizedcorpus(corpus, simpleAscii())
-tokenized.passages[2]
+```
+
 
 
 
 
 ## Token index
 
-You can index a tokenized edition.  The result is a dictionary.
+You can index a tokenized edition.  The result is a dictionary keyed by token strings, and yielding lists of CTS URNs.
 
+```{julia}
 idx = corpusindex(corpus, simpleAscii())
-typeof(idx)
-# output
+```
 
 
+```{julia}
 idx["horse"]
-
+```

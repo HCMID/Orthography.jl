@@ -1,5 +1,5 @@
 ---
-title: "Validating orthography"
+title: "Orthographic validation"
 ---
 
 ## An example orthographic system: `SimpleAscii`

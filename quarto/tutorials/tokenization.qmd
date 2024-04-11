@@ -38,9 +38,6 @@ tokens[1] |> tokentext
 ```
 
 
-```{julia}
-tokens[1] |> tokencategory
-```
 
 The `tokencategory` function tells you its type.
 
@@ -78,14 +75,15 @@ using CitableText, CitableCorpus
 psgurn = CtsUrn("urn:cts:orthodocs:tokenization.docs.v1:sample")
 cn = CitablePassage(psgurn, s)
 tokenizedpassages = tokenize(cn, orthography)
-
 ```
+
+The `urn` function gives you this new, token-level URN.
 
 ```{julia}
 tokenizedpassages[1] |> urn
 ```
 
-
+To get the text and type of hte token, use the same functions you used with `OrthographicToken`s.
 
 ```{julia}
 tokenizedpassages[1] |> tokentext
@@ -95,6 +93,7 @@ tokenizedpassages[1] |> tokentext
 tokenizedpassages[1] |> tokencategory
 ```
 
+If you prefer to get the citable passage as a `CitablePassage` object, use the `passage` function.
 
 
 ```{julia}
@@ -102,10 +101,33 @@ tokenizedpassages[1] |> passage
 ```
 
 
+One common idiom might be to get a new collection of citable passages.
+
+```{julia}
+tokenizedpassages .|> passage
+```
+
+You could construct new citable corpus from this list.
+
+```{julia}
+tokenizedpassages .|> passage |> CitableTextCorpus
+```
+
+
+
+
 ### A citable text corpus
 
-If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse a `CitablePassage`.  If your text corpus has only a single node, the results will therefore be equal to parsing that node separately, as this example shows.
+If you tokenize a `CitableTextCorpus`, you get the same kind of pairing of citable nodes with token categories as when you parse an individual `CitablePassage`.  
 
+
+```{julia}
 corpus = CitableTextCorpus([cn])
 tokenizedcorpus = tokenize(corpus, orthography)
-tokenizedcorpus == tokenizednodes
+```
+
+If your text corpus has only a single node, the results will therefore be equal to parsing that node separately.
+
+```{julia}
+tokenizedcorpus == tokenizedpassages
+```
