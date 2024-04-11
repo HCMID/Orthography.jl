@@ -2,10 +2,11 @@
 title: "Implementations"
 ---
 
-The following packages implement one or more concrete subtypes of the `OrthographicSystem` abstraction.
+The following Julia packages available from juliahub implement one or more concrete subtypes of the `OrthographicSystem` abstraction.
 
 - `LatinOrthography.jl`
 - `PolytonicGreek.jl`
-- Lycian
-- Hebrew
-- Manuscript Greek
+- `ManuscriptOrthography.jl` (Greek)
+- `AtticGreek.jl`
+- `Lycian.jl`
+- `BiblicalHebrew.jl`
