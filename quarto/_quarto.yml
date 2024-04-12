@@ -26,6 +26,7 @@ website:
  
       - text: "Guides"
         file: guides/index.qmd           
+           
       - text: "Reference"
         file: reference/index.qmd  
       - text: "Acknowledgments"
@@ -43,6 +44,7 @@ website:
     - title: "Tutorials"
       contents: 
         - tutorials/index.qmd
+        - text: "---"           
         - tutorials/validation.qmd
         - tutorials/tokenization.qmd
         - tutorials/corpora.qmd
@@ -50,12 +52,14 @@ website:
     - title: "Guides"
       contents:
         - guides/index.qmd
+        - text: "---"   
         - guides/tokenization-guide.qmd
         - guides/diyortho.qmd
 
     - title: "Reference"
       contents: 
         - reference/index.qmd
+        - text: "---"   
         - reference/implementations.qmd
 
 

@@ -2,4 +2,11 @@
 title: "Guides"
 ---
 
-Recipe book for working with `Orthography.jl`
+If you're just getting started with `Orthography.jl`, 
+
+:::{.callout-warning}
+
+Recipes for working with the `Orthography.jl` package.
+:::
+
+

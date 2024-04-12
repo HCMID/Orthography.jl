@@ -8,3 +8,5 @@ This site introduces the conceptual model of orthography developed over several 
 It also includes documentation of `Orthography.jl`, a Julia package that implements the MID model of orthography. `Orthography.jl` supports working with editions of digital texts adhering to a specified orthography.
 
 
+
+> Find more of my digital scholarship [here](https://neelsmith.quarto.pub/digschol/).
