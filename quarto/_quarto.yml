@@ -68,9 +68,8 @@ website:
         - reference/index.qmd
         - reference/apis.qmd
         - reference/internals.qmd
-        - text: "---"   
-        - reference/implementations.qmd
-
+        
+        
 
 
 

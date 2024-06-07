@@ -1,4 +1,4 @@
-# API documentation: exported types and functions
+# Exported types and functions
 
 ## Types
 
@@ -24,39 +24,142 @@ using Orthography
 ```
 :::
 
-LexicalToken
-NumericToken
-PunctuationToken
+`LexicalToken`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc LexicalToken
 ```
+:::
+
+
+`NumericToken`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc NumericToken
+```
+:::
+
+
+`PunctuationToken`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc PunctuationToken
+```
+:::
 
 ## Functions
 
 Public functions implemented for all subtypes of `OrthographicSystem`.
 
-```@docs
-codepoints
-tokentypes
-validcp
-validstring
-tokenize
+
+
+`codepoints`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc PunctuationToken
 ```
+:::
+
+
+`tokentypes`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc tokentypes
+```
+:::
+
+`validcp`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc validcp
+```
+:::
+
+`validstring`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc validstring
+```
+:::
+
+`tokenize`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc tokenize
+```
+:::
+
 Working with text corpora:
 
-```@docs
-corpus_histo
+
+`corpus_histo`
  
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc corpus_histo
 ```
+:::
 
 Other utilities
 
-```@docs
-nfkc
+
+`nfkc`
+
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc nfkc
 ```
+:::
 
 ## Example implementation
 
-```@docs
-SimpleAscii
-simpleAscii
+
+`SimpleAscii`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc SimpleAscii
 ```
+:::
+
+`simpleAscii`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc simpleAscii
+```
+:::
 

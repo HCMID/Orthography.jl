@@ -1,4 +1,4 @@
-# API documentation: internals
+# Internal functions
 
 ## Generic utility functions
 
@@ -9,16 +9,117 @@ Orthography.trimtail
 
 ## Functions supporting the `SimpleAscii` implementation
 
-```@docs
+
 Orthography.asciialphabetic
-Orthography.asciinumeric
-Orthography.asciipunctuation
-Orthography.asciiwhitespace
-Orthography.asciiCPs
-Orthography.basicTypes
-Orthography.splitAsciiPunctuation
-Orthography.asciitokenforstring
-Orthography.isAsciiAlphabetic
-Orthography.isAsciiPunctuation
-Orthography.isAsciiNumeric
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Orthography
+@doc OrthographicSystem
 ```
+:::
+
+Orthography.asciinumeric
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.asciipunctuation
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+
+Orthography.asciiwhitespace
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.asciiCPs
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+
+Orthography.basicTypes
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.splitAsciiPunctuation
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.asciitokenforstring
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.isAsciiAlphabetic
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.isAsciiPunctuation
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+
+Orthography.isAsciiNumeric
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc OrthographicSystem
+```
+:::
+

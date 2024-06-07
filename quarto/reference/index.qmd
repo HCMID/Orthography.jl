@@ -3,4 +3,19 @@ title: Reference
 ---
 
 
-Current API docs for the `Orthography.jl` package are on github at [https://hcmid.github.io/Orthography.jl/stable/](https://hcmid.github.io/Orthography.jl/stable/).
+## API documentation
+
+- [exported types and functions](./apis.qmd)
+- [internal functions](./internals.qmd)
+
+## Implementations
+
+The following Julia packages available from the Julia central registry implement one or more concrete subtypes of the `OrthographicSystem` abstraction.
+
+- `LatinOrthography.jl`
+- `PolytonicGreek.jl`
+- `ManuscriptOrthography.jl` (Greek)
+- `GreekScientificOrthography.jl`
+- `AtticGreek.jl`
+- `Lycian.jl`
+- `BiblicalHebrew.jl`
