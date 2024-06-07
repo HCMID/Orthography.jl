@@ -5,7 +5,7 @@ theme: spacelab
 execute:
   freeze: auto
 date: last-modified  
-margin-header: "⚠️ *Draft release.*"
+margin-header: "⚠️ *Draft documentation in progress:*<br/>Package version `0.22.0`."
 format:
   html: 
     toc: true
@@ -26,6 +26,7 @@ website:
  
       - text: "Guides"
         file: guides/index.qmd           
+           
       - text: "Reference"
         file: reference/index.qmd  
       - text: "Acknowledgments"
@@ -34,6 +35,13 @@ website:
       - icon: github
         href: https://github.com/hcmid/Orthography.jl
         aria-label: GitHub
+      - icon: person-circle
+        menu:
+          - text: "About me"
+            href: https://neelsmith.quarto.pub
+          - text: "More of my digital scholarship"
+            href: https://neelsmith.quarto.pub/digschol/
+        aria-label: "More of my work"         
 
   sidebar:
     - title: "Concepts"
@@ -43,6 +51,7 @@ website:
     - title: "Tutorials"
       contents: 
         - tutorials/index.qmd
+        - text: "---"           
         - tutorials/validation.qmd
         - tutorials/tokenization.qmd
         - tutorials/corpora.qmd
@@ -50,13 +59,17 @@ website:
     - title: "Guides"
       contents:
         - guides/index.qmd
+        - text: "---"   
         - guides/tokenization-guide.qmd
         - guides/diyortho.qmd
 
     - title: "Reference"
       contents: 
         - reference/index.qmd
-        - reference/implementations.qmd
+        - reference/apis.qmd
+        - reference/internals.qmd
+        
+        
 
 
 

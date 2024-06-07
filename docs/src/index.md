@@ -1,4 +1,4 @@
 # Orthography
 
 
-Learn the package on quarto.pub.  See API docs here.
+Documentation has moved to [quarto.pub](https://neelsmith.quarto.pub/orthography/).

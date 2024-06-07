@@ -17,12 +17,7 @@ makedocs(
     sitename = "Orthography",
     pages = [
         "Orthography.jl" => "index.md",
-   
-        "API documentation" => [
-            "man/index.md",
-            "man/internals.md"
-        ]
-    ]
+      ]
     )
 
 deploydocs(
