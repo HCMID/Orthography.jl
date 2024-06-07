@@ -1,0 +1,62 @@
+# API documentation: exported types and functions
+
+## Types
+
+
+`OrthographicSystem`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+using Orthography
+@doc OrthographicSystem
+```
+:::
+
+`TokenCategory`
+
+:::{.callout-note appearance="minimal"}
+```{julia}
+#| echo: false
+#| warning: false
+@doc TokenCategory
+```
+:::
+
+LexicalToken
+NumericToken
+PunctuationToken
+```
+
+## Functions
+
+Public functions implemented for all subtypes of `OrthographicSystem`.
+
+```@docs
+codepoints
+tokentypes
+validcp
+validstring
+tokenize
+```
+Working with text corpora:
+
+```@docs
+corpus_histo
+ 
+```
+
+Other utilities
+
+```@docs
+nfkc
+```
+
+## Example implementation
+
+```@docs
+SimpleAscii
+simpleAscii
+```
+

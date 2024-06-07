@@ -5,7 +5,7 @@ theme: spacelab
 execute:
   freeze: auto
 date: last-modified  
-margin-header: "⚠️ *Draft documentation.*"
+margin-header: "⚠️ *Draft documentation in progress:*<br/>Package version `0.22.0`."
 format:
   html: 
     toc: true
@@ -35,6 +35,13 @@ website:
       - icon: github
         href: https://github.com/hcmid/Orthography.jl
         aria-label: GitHub
+      - icon: person-circle
+        menu:
+          - text: "About me"
+            href: https://neelsmith.quarto.pub
+          - text: "More of my digital scholarship"
+            href: https://neelsmith.quarto.pub/digschol/
+        aria-label: "More of my work"         
 
   sidebar:
     - title: "Concepts"
@@ -59,8 +66,11 @@ website:
     - title: "Reference"
       contents: 
         - reference/index.qmd
+        - reference/apis.qmd
+        - reference/internals.qmd
         - text: "---"   
         - reference/implementations.qmd
+
 
 
 
