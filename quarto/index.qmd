@@ -2,8 +2,32 @@
 title: "Orthography"
 ---
 
+We can’t read a text until we understand its writing system; we can’t meaningfully work with a digital text until we understand how its writing system is encoded digitally.
 
-This site introduces the conceptual model of orthography developed over several years in the work of the Holy Cross Manuscripts, Inscriptions and Documents Club (MID). 
+`Orthography.jl` is a Julia package to address this problem.[^mid]
 
-It also includes documentation of `Orthography.jl`, a Julia package that implements the MID model of orthography. `Orthography.jl` supports working with editions of digital texts adhering to a specified orthography.
 
+[^mid]: `Orthography.jl` was originally developed to support projects at the Holy Cross Manuscripts, Inscriptions and Documents Club (MID).
+
+
+
+## Contents
+
+| | Learn about orthography | Reference material |
+| --- | --- | --- |
+| **Hands-on** |  Try a [tutorial](./tutorials/) to get started   | Find [recipes](./guides/) for specific tasks |
+| **Cognition** | What is a [citable morphological parser](./concepts/)?  | See [API documentation](./reference/), and other reference information |
+
+
+
+## Implementations
+
+Some implementations of the `OrthographicSystem` abstraction:
+
+- PolytonicGreek
+- AtticGreek
+- ManuscriptOrthography
+- GreekScientificOrthography
+- LatinOrthography
+- Lycian
+- BiblicalHebrew

@@ -11,3 +11,14 @@ A *token* is a classified string of characters. For any given orthography, we ca
 
 A token is *valid* if satisfies two criteria. First, each code point in the token must belong to the orthography's character set, and second, the composition of the token's characters must be valid for that specific type of token. For example, an abbreviation token might be required to end with a period, or a simple numeric token might be required to include only the characters `0` - `9`.
 
+
+::: {.callout-caution}
+Remainder of this page TBA
+:::
+
+## Problems addressed
+
+-  conflation of language and writing system!
+-    naive generalizations from a single language (especially English)
+- hacks to work around problems that should follow automatically from a well defined digital orthographic system
+
